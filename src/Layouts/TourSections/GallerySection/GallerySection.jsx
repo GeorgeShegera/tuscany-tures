@@ -1,4 +1,3 @@
-import "../../../swiperStyles.css";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectTour } from "../../../Slices/tours/toursSlice";
@@ -76,7 +75,7 @@ export default function () {
           modules={[Navigation, Scrollbar]}
           direction={"horizontal"}
           scrollbar={{
-            el: ".gallery-scrollBar",
+            el: ".swiper-scrollbar__gallery",
             draggable: true,
             dragSize: 120,
           }}
@@ -134,8 +133,8 @@ export default function () {
             );
           })}
         </Swiper>
-        <div className="scrollBarWrapper">
-          <div className={`gallery-scrollBar scrollBarTours`}></div>
+        <div className="swiper-scrollbar__wrapper">
+          <div className="swiper-scrollbar__gallery swiper-scrollbar__content"></div>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import "../../../swiperStyles.css";
 import style from "./PopularDestionations.module.css";
 import { useEffect, useRef, useState } from "react";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
@@ -54,7 +53,11 @@ export default function () {
           slidesPerView={4}
           modules={[Navigation, Scrollbar]}
           direction={"horizontal"}
-          scrollbar={{ el: ".tripsScrollBar", draggable: true, dragSize: 120 }}
+          scrollbar={{
+            el: ".swiper-scrollbar__trips",
+            draggable: true,
+            dragSize: 120,
+          }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -105,8 +108,8 @@ export default function () {
           <SwiperSlide className={style.testSlide}>Slide 6</SwiperSlide>
           <SwiperSlide className={style.testSlide}>Slide 7</SwiperSlide>
         </Swiper>
-        <div className="scrollBarWrapper">
-          <div className={`tripsScrollBar scrollBarTours`}></div>
+        <div className="swiper-scrollbar__wrapper">
+          <div className="swiper-scrollbar__content swiper-scrollbar__trips"></div>
         </div>
       </div>
     </section>
