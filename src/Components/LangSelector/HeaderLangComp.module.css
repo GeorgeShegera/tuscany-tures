@@ -1,0 +1,62 @@
+.customSelect {
+  position: relative;
+  width: fit-content;
+  user-select: none;
+  opacity: 0.6;
+}
+
+.selectedOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: 0.4rem;
+  align-self: center;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  font-size: 2rem;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: transparent;
+  list-style: none;
+  margin-top: 1rem;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.customSelect.open .options {
+  opacity: 1;
+  height: auto;
+  overflow: auto;
+}
+
+.options li {
+  color: inherit;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  background-color: transparent;
+  transition: color 0.2s ease;
+}
+
+.options li:hover {
+  color: #e17d02;
+}
+
+/* 720px */
+@media (max-width: 45em) {
+  .customSelect {
+    margin-bottom: 12rem;
+  }
+}

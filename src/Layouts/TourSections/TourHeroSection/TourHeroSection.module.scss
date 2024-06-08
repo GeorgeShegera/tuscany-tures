@@ -1,0 +1,163 @@
+@import "/src/sass/abstracts/variables";
+@import "/src/sass/base/animations";
+
+.section {
+  padding: 5rem 0 12rem 0;
+}
+
+.backBtn:link,
+.backBtn:visited {
+  opacity: 0.4;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: $color-gray;
+  margin-bottom: 5rem;
+}
+
+.heroContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4rem;
+  align-items: center;
+
+  @media (max-width: $bg-medium) {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+
+  .heroImgs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center;
+
+    @media (min-width: $bg-small) and (max-width: $bg-medium) {
+      grid-template-columns: 0.3fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      align-items: center;
+    }
+
+    .heroImg {
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      display: flex;
+      max-width: 70rem;
+      width: 100%;
+      height: 14.1rem;
+      position: relative;
+      border-radius: 12px;
+      cursor: pointer;
+
+      @media (min-width: $bg-small) and (max-width: $bg-medium) {
+        height: 100%;
+      }
+    }
+
+    .mainImg {
+      cursor: default;
+      opacity: 1;
+      animation-name: opacityAppearance;
+      animation-duration: 0.8s;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      height: 60rem;
+
+      @media (min-width: $bg-small) and (max-width: $bg-medium) {
+        height: 50rem;
+        grid-column: 2 / 3;
+        grid-row: 1 /-1;
+      }
+    }
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .contentInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @media (max-width: $bg-small) {
+      text-align: center;
+    }
+
+    .priceWrapper {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+
+      & span {
+        font-weight: 600;
+        font-size: 2.4rem;
+        opacity: 0.8;
+      }
+
+      & p {
+        font-weight: 800;
+        font-size: 3.2rem;
+        color: #fa8b02;
+      }
+      @media (max-width: $bg-medium) {
+        & span {
+          font-size: 2rem;
+        }
+        & p {
+          font-size: 2.4rem;
+        }
+      }
+      @media (max-width: $bg-small) {
+        justify-content: center;
+      }
+    }
+
+    .tourDescription {
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: $snug-line-height;
+      opacity: 0.6;
+
+      @media (max-width: $bg-medium) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .dateTimeContainer {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (max-width: $bg-medium) {
+      flex-direction: row;
+      width: 100%;
+    }
+    @media (max-width: $bg-small) {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .buyTourContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      @media (max-width: $bg-medium) {
+        width: 100%;
+        min-width: 22rem;
+        max-width: 34rem;
+      }
+      @media (max-width: $bg-small) {
+        gap: 1.8rem;
+      }
+    }
+  }
+}

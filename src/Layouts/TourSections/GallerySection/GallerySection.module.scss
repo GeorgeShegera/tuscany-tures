@@ -1,0 +1,66 @@
+@use "/src/sass/abstracts" as *;
+
+.section {
+  padding: 0rem 0 8.6rem 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5.7rem;
+
+    @include respond(medium) {
+      margin-bottom: 0;
+
+      h2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .btnContainer {
+      display: flex;
+      gap: 2rem;
+
+      @include respond(medium) {
+        display: none;
+      }
+    }
+  }
+}
+
+.swiper {
+  height: 50.6rem;
+
+  .slideContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+
+    .imgContainer {
+      background-position: center;
+      background-size: cover;
+      border-radius: 12px;
+    }
+
+    &OddThreeImgs {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 2.2rem;
+      column-gap: 2rem;
+
+      .imgContainer:last-child {
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
+      }
+    }
+
+    &OddTwoImgs {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 2rem;
+      row-gap: 2rem;
+    }
+  }
+}

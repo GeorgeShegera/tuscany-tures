@@ -1,0 +1,23 @@
+@import "/src/sass//abstracts/variables";
+
+.button {
+  &:link,
+  &:visited {
+    background-color: $color-primary;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    line-height: $tight-line-height;
+    padding: 1rem 2.4rem;
+    transition: all 0.3s ease;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $color-primary-dark;
+  }
+}

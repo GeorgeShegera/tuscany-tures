@@ -1,0 +1,76 @@
+.selectTimeContainer
+    display: flex
+    flex-direction: column
+    gap: 0.8rem    
+
+.header
+    font-weight: 600
+    font-size: 1.8rem
+    line-height: 1.44
+
+.selectTime
+    padding: 1.4rem 2.4rem
+    border: 1px solid rgba(51, 51, 51, 0.2)
+    border-radius: 8px
+    font-size: 1.6rem
+    cursor: pointer
+    transition: all 0.6s ease
+    position: relative
+
+.disableSelector
+    opacity: 0.7
+    cursor: default    
+
+.disableSelector .timeContent
+    opacity: 0.5
+    user-select: none
+
+.timeContent
+    transition: all 0.6s ease
+    position: relative
+
+.timeIcon
+    position: absolute
+    top: 50%
+    right: 0
+    transform: translateY(-50%)
+    font-size: 2rem
+
+
+.timeList
+    overflow: hidden
+    list-style: none
+    position: absolute
+    top: 116%
+    left: 0
+    width: 100%
+    pointer-events: none    
+    transition: all 0.2s ease-in
+    border: 1px solid rgba(51, 51, 51, 0.2)
+    background-color: #f9f9f9
+    border-radius: 8px
+
+.timeList.hidden
+    opacity: 0      
+
+.timeList.hidden .timeListItem
+    pointer-events: none
+
+.timeList.visible
+   opacity: 1      
+    
+.timeListItem        
+    visibility: visible
+    pointer-events: auto
+    
+.timeListItem
+    padding: 1.4rem 2.4rem
+    cursor: pointer
+
+.timeListItem:hover
+    background-color: #ebebeb
+
+/* 688 */
+@media (max-width: 43em)
+    .header
+        font-size: 2rem

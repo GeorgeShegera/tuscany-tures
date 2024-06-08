@@ -1,0 +1,131 @@
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.selectDate {
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 1.44;
+}
+
+.calendar {
+  width: fit-content;
+  padding: 3rem;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  border-radius: 12px;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.monthBtns {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.monthBtn {
+  color: #333;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  transition: all 0.3s ease-in;
+}
+
+.monthBtn:hover:not(.btnDisabled) {
+  color: #fa8b02;
+}
+
+.btnDisabled {
+  color: #858585;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.monthYear {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.calendarGrid {
+  display: grid;
+  row-gap: 0.4rem;
+  column-gap: 0.2rem;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+}
+
+.calendarCell {
+  width: 3.4rem;
+  height: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.emptyCell {
+  cursor: default;
+}
+
+.dayOfWeek {
+  font-size: 1.2rem;
+  cursor: default;
+}
+
+.day {
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+.day:hover:not(.prevDay) {
+  background-color: #fcb967;
+}
+
+.prevDay {
+  background-color: #999999;
+  cursor: default;
+}
+
+.curDay {
+  border: 1px solid #fa8b02;
+}
+
+.availableDay {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.selectedDate {
+  background-color: #fa8b02;
+  color: #fff;
+}
+
+/* 688 */
+@media (max-width: 43em) {
+  .selectDate {
+    font-size: 2rem;
+  }
+  .calendarCell {
+    width: 4rem;
+    height: 3.8rem;
+    font-size: 1.8rem;
+  }
+  .monthYear {
+    font-size: 1.8rem;
+  }
+  .dayOfWeek {
+    font-size: 1.4rem;
+  }
+}

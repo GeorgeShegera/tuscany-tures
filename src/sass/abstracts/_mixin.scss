@@ -1,0 +1,27 @@
+@use "./variables" as variables;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == largest {
+    @media only screen and (max-width: variables.$bg-largest) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media only screen and (max-width: variables.$bg-large) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media only screen and (max-width: variables.$bg-medium) {
+      @content;
+    }
+  } @else if $breakpoint == small {
+    @media only screen and (max-width: variables.$bg-small) {
+      @content;
+    }
+  }
+}

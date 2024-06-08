@@ -1,0 +1,94 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardImgContainer {
+  overflow: hidden;
+  max-width: 33rem;
+  height: 40.4rem;
+  width: 100%;
+  border-radius: 24px;
+  margin-bottom: 1.6rem;
+}
+
+.cardImg {
+  display: block;
+
+  height: 100%;
+  position: relative;
+  right: 15rem;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cardContent {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  max-width: 32rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.priceContainer p {
+  opacity: 0.8;
+}
+.price {
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: #fa8b02;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.6;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: #fa8b02;
+}
+
+.description {
+  font-weight: 400;
+  line-height: 1.44;
+}
+
+.moreBtn:link,
+.moreBtn:visited {
+  width: fit-content;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #fa8b02;
+}
+
+/* 1248px */
+@media (max-width: 78em) {
+  .cardImgContainer {
+    max-height: 34rem;
+  }
+}

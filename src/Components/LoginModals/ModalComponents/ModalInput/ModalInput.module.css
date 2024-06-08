@@ -1,0 +1,61 @@
+.inputContainer {
+  display: flex;
+  font-size: 1.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.inputLabel {
+  opacity: 0.6;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.inputWrapper {
+  flex: 1 1 36.8rem;
+  position: relative;
+}
+
+.inputModal {
+  width: 100%;
+  outline: none;
+  padding: 1.4rem 5rem 1.4rem 2.4rem;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  border-radius: 8px;
+  font-family: "Open Sans";
+}
+.inputModal::placeholder {
+  opacity: 0.5;
+}
+
+.showPassword {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 2.4rem;
+  font-size: 2.4rem;
+  cursor: pointer;
+  color: #333;
+  opacity: 0.6;
+}
+
+/* 720px */
+/* @media (max-height: 45em) {
+  .inputLabel {
+    margin-bottom: 0.3rem;
+  }
+} */
+
+/* 528px */
+@media (max-width: 33em) {
+  .inputContainer {
+    font-size: 1.4rem;
+  }
+  .inputModal::placeholder {
+    font-size: 1.2rem;
+  }
+  .showPassword {
+    font-size: 1.5em;
+  }
+}

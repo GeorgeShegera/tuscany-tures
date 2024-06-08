@@ -1,0 +1,62 @@
+.homeHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 2rem 3.2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 142rem;
+
+  display: flex;
+  gap: 10rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoTusc {
+  display: block;
+  max-width: 13.3rem;
+}
+
+.logoTusc > img {
+  width: 100%;
+}
+
+.mobileBtn {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobBtnMenu {
+  font-size: 4.3rem;
+}
+
+.mobBtnCancel {
+  font-size: 3.9rem;
+}
+
+/* 1248px */
+@media (max-width: 78em) {
+  .mobileBtn {
+    display: block;
+    z-index: 4;
+    flex: 0 0 auto;
+  }
+}
+
+/* 720px */
+@media (max-width: 45em) {
+  .logoTusc > img {
+    width: 11rem;
+  }
+}

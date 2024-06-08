@@ -1,0 +1,30 @@
+@import "/src/sass/abstracts/variables";
+
+.sectionDetails {
+  padding-bottom: 7.4rem;
+
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.2rem;
+    max-width: 70rem;
+
+    .heading {
+      line-height: 0.81;
+    }
+
+    .details {
+      font-size: 1.8rem;
+      line-height: $normal-line-height;
+
+      @media (max-width: $bg-large) {
+        font-size: 1.6rem;
+      }
+
+      @media (max-width: $bg-small) {
+        text-align: center;
+      }
+    }
+  }
+}

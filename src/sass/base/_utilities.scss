@@ -1,0 +1,21 @@
+.container {
+  margin: 0 auto;
+  max-inline-size: 142rem;
+}
+
+.btn-shadow {
+  &:link,
+  &:visited {
+    box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.3rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.1);
+  }
+}
