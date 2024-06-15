@@ -1,55 +1,43 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectTour } from "../../../Slices/tours/toursSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  initComments,
+  selectComments,
+} from "../../Slices/comments/commentsSlice";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
-import style from "./GallerySection.module.scss";
+import style from "./Reviews.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar } from "swiper/modules";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function () {
+export default function ({ tourId = null }) {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(true);
   const swiperRef = useRef(null);
-  const [slidesImgs, setSlidesImgs] = useState([{ imgs: [] }]);
-  const tour = useSelector(selectTour);
+  const comments = useSelector(selectComments);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (swiperRef.current) {
       setIsEnd(swiperRef.current.isEnd);
       setIsBeginning(swiperRef.current.isBeginning);
     }
-  }, [slidesImgs]);
+  }, [comments]);
 
   useEffect(() => {
-    const imgsCount = tour.imgs.length;
-    let newSlidesImgs = [];
-    let index = 0;
-    for (let i = 4; i < imgsCount; i++) {
-      newSlidesImgs.push({ imgs: [tour.imgs[i]] });
-      if (i % 2 != 0) {
-        if (i + 2 < imgsCount) {
-          newSlidesImgs[index].imgs.push(tour.imgs[i + 1]);
-          newSlidesImgs[index].imgs.push(tour.imgs[i + 2]);
-          i += 2;
-        } else if (i + 1 < imgsCount) {
-          newSlidesImgs[index].imgs.push(tour.imgs[i + 1]);
-          i++;
-        }
-      }
-      index++;
-    }
-    setSlidesImgs(newSlidesImgs);
-    console.log(slidesImgs);
-  }, [tour]);
+    dispatch(initComments(tourId));
+  }, [tourId]);
 
   return (
     <section className={style.section}>
       <div className="container">
         <div className="swiper-header">
-          <h2 className="heading-secondary swiper-header__title">Gallery</h2>
+          <h2 className="heading-secondary swiper-header__title">
+            Happy Customers Says
+          </h2>
           <div className="swiper-header__btn-container">
             <button
               className={`swiper-btn ${
@@ -103,32 +91,21 @@ export default function () {
             },
           }}
         >
-          {slidesImgs.map((imgSlide, index) => {
-            const isOdd = index % 2 != 0;
+          {comments.map((comment, index) => {
             return (
-              <SwiperSlide
-                key={index}
-                className={`${style.slideContainer} ${
-                  isOdd
-                    ? imgSlide.imgs.length == 3
-                      ? style.slideContainerOddThreeImgs
-                      : imgSlide.imgs.length == 2
-                      ? style.slideContainerOddTwoImgs
-                      : style.slideContainerOddOneImg
-                    : ""
-                }`}
-              >
-                {imgSlide.imgs.map((img, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className={style.imgContainer}
-                      style={{ backgroundImage: `url(${img})` }}
-                    >
-                      &nbsp;
-                    </div>
-                  );
-                })}
+              <SwiperSlide key={index}>
+                <div className={style.container}>
+                  <figure className={style.userContent}>
+                    <img
+                      className={style.userPhoto}
+                      src={comment.avatarUrl}
+                      alt={`${comment.Name}'s avatar`}
+                    />
+                    <figcaption className={style.userName}>
+                      {comment.name} {comment.surname}
+                    </figcaption>
+                  </figure>
+                </div>
               </SwiperSlide>
             );
           })}

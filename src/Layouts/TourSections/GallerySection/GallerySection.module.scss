@@ -2,32 +2,6 @@
 
 .section {
   padding: 0rem 0 8.6rem 0;
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5.7rem;
-
-    @include respond(medium) {
-      margin-bottom: 0;
-
-      h2 {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-    }
-
-    .btnContainer {
-      display: flex;
-      gap: 2rem;
-
-      @include respond(medium) {
-        display: none;
-      }
-    }
-  }
 }
 
 .swiper {
