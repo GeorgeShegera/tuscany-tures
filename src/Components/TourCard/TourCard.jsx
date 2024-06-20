@@ -108,7 +108,8 @@ export default function TourCard({
           </div>
           <p className={style.description}>{descString}</p>
         </div>
-        <p
+        <a
+          href="#"
           className={style.moreBtn}
           onClick={(e) => {
             e.preventDefault();
@@ -116,7 +117,7 @@ export default function TourCard({
           }}
         >
           Read More &#8594;
-        </p>
+        </a>
       </div>
     </article>
   );

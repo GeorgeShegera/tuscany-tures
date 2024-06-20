@@ -1,8 +1,19 @@
 @use "/src/sass/abstracts/index" as *;
-.swiper {
-  height: 70rem;
+
+.section {
+  padding-bottom: 16rem;
 }
+
+.swiper {
+  height: 43rem;
+}
+
+.slide {
+  align-self: stretch;
+}
+
 .container {
+  box-sizing: border-box;
   height: 100%;
   padding: 3rem;
   border-radius: 2.4rem;
@@ -12,7 +23,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
 
   &:hover {
     .userName {
@@ -50,7 +60,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    min-height: 100%;
+    margin: auto 0;
 
     &::before,
     &::after {
@@ -58,6 +68,10 @@
       background-image: url("../../../public/imgs/DoubleQuotes.png");
       width: 4rem;
       height: 2.8rem;
+    }
+
+    &::after {
+      align-self: flex-end;
     }
   }
 }

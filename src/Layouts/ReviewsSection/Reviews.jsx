@@ -63,7 +63,7 @@ export default function ({ tourId = null }) {
           modules={[Navigation, Scrollbar]}
           direction={"horizontal"}
           scrollbar={{
-            el: ".swiper-scrollbar__gallery",
+            el: ".swiper-scrollbar__comments",
             draggable: true,
             dragSize: 120,
           }}
@@ -74,7 +74,6 @@ export default function ({ tourId = null }) {
           onSlideChange={(swiper) => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
-            console.log("SlideChanged");
           }}
           breakpoints={{
             900: {
@@ -112,7 +111,7 @@ export default function ({ tourId = null }) {
           })}
         </Swiper>
         <div className="swiper-scrollbar__wrapper">
-          <div className="swiper-scrollbar__gallery swiper-scrollbar__content"></div>
+          <div className="swiper-scrollbar__comments swiper-scrollbar__content"></div>
         </div>
       </div>
     </section>
