@@ -37,6 +37,7 @@ export default function HomeHeader(props) {
   return (
     <>
       <header
+        id="navigation"
         className={style.homeHeader}
         style={{ boxShadow: `${props.boxShadow}` }}
       >

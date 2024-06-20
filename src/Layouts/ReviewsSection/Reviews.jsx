@@ -93,7 +93,7 @@ export default function ({ tourId = null }) {
         >
           {comments.map((comment, index) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className={style.slide}>
                 <div className={style.container}>
                   <figure className={style.userContent}>
                     <img
@@ -102,9 +102,10 @@ export default function ({ tourId = null }) {
                       alt={`${comment.Name}'s avatar`}
                     />
                     <figcaption className={style.userName}>
-                      {comment.name} {comment.surname}
+                      {comment.name} <br /> {comment.surname}
                     </figcaption>
                   </figure>
+                  <p className={style.reviewText}>{comment.text}</p>
                 </div>
               </SwiperSlide>
             );

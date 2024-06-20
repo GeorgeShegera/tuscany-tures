@@ -7,6 +7,7 @@ import TourHeroSection from "../../Layouts/TourSections/TourHeroSection/TourHero
 import TourDetailsSection from "../../Layouts/TourSections/TourDetailsSection/TourDetailsSection";
 import GallerySection from "../../Layouts/TourSections/GallerySection/GallerySection";
 import ReviewsSection from "../../Layouts/ReviewsSection/Reviews";
+
 export default function TourPage() {
   const { tourId } = useParams();
   const dispatch = useDispatch();
