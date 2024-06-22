@@ -6,6 +6,11 @@
 
 .swiper {
   height: 43rem;
+
+  @include respond(small) {
+    height: 55rem;
+    text-align: center;
+  }
 }
 
 .slide {
@@ -62,10 +67,15 @@
     gap: 1rem;
     margin: auto 0;
 
+    @include respond(medium) {
+      font-size: 1.6rem;
+    }
+
     &::before,
     &::after {
       content: "";
       background-image: url("../../../public/imgs/DoubleQuotes.png");
+      background-size: cover;
       width: 4rem;
       height: 2.8rem;
     }

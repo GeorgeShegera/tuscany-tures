@@ -86,7 +86,6 @@ export default function () {
           onSlideChange={(swiper) => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
-            console.log("SlideChanged");
           }}
           breakpoints={{
             900: {
@@ -100,6 +99,9 @@ export default function () {
             },
             0: {
               slidesPerView: 0.7,
+              scrollbar: {
+                dragSize: 60,
+              },
             },
           }}
         >

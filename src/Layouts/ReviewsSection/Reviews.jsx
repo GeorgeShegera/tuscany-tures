@@ -82,11 +82,11 @@ export default function ({ tourId = null }) {
             720: {
               slidesPerView: 1.2,
             },
-            528: {
-              slidesPerView: 1,
-            },
             0: {
-              slidesPerView: 0.7,
+              slidesPerView: 1,
+              scrollbar: {
+                dragSize: 60,
+              },
             },
           }}
         >
