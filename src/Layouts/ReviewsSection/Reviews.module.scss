@@ -18,11 +18,12 @@
 }
 
 .container {
+  border-radius: 2.4rem;
   box-sizing: border-box;
   height: 100%;
   padding: 3rem;
-  border-radius: 2.4rem;
-  border: $line-thin;
+
+  border: $line-thin-dark;
   font-size: 1.8rem;
   line-height: $normal-line-height;
   display: flex;

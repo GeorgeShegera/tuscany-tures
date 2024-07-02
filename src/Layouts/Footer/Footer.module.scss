@@ -1,0 +1,167 @@
+@use "/src/sass/abstracts/index" as *;
+
+.footer {
+  background-color: $color-gray;
+
+  .container {
+    max-width: 150rem;
+    margin: 0 auto;
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3.3rem;
+  }
+
+  .logoWrapper:link,
+  .logoWrapper:visited {
+    align-self: flex-start;
+
+    img {
+      height: 13rem;
+    }
+  }
+
+  .content {
+    padding: 3.3rem 0;
+    border-top: 1px solid rgba($color-white, 0.1);
+    border-bottom: 1px solid rgba($color-white, 0.1);
+    color: $color-white;
+
+    display: grid;
+    column-gap: 6%;
+    grid-template-columns: 2fr 0.89fr 0.885fr 2.3fr 1fr;
+
+    @include respond(largest) {
+      column-gap: 4%;
+    }
+
+    @include respond(large) {
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: 1.5fr repeat(2, 1fr);
+      column-gap: 2rem;
+      row-gap: 5rem;
+    }
+
+    @include respond(small) {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      row-gap: 4rem;
+    }
+  }
+
+  .columnWrapper {
+    .itemList {
+      list-style: none;
+      font-size: 1.8rem;
+      font-weight: 600;
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      @include respond(medium) {
+        font-size: 1.6rem;
+      }
+
+      @include respond(small) {
+        gap: 0.7rem;
+      }
+
+      a:link,
+      a:visited {
+        color: inherit;
+        text-decoration: none;
+        line-height: $normal-line-height;
+      }
+    }
+
+    .title {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: $snug-line-height;
+
+      @include respond(medium) {
+        font-size: 1.8rem;
+      }
+      @include respond(small) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .contacts {
+    .itemList {
+      gap: 2rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+
+  .social {
+    .title {
+      text-align: center;
+    }
+
+    .itemList {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+
+      li {
+        display: block;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background-color: $color-primary;
+        color: $color-gray;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          transform: scale(1.1);
+          color: $color-primary;
+          background-color: $color-gray;
+        }
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .socialIcon {
+          font-size: 2.4rem;
+        }
+
+        &:last-child {
+          .socialIcon {
+            font-size: 2.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  .icon {
+    font-size: 2.4rem;
+    color: $color-primary;
+    transition: all 0.3s ease-out;
+  }
+
+  .copyright {
+    align-self: center;
+    color: $color-white;
+    font-size: 1.6rem;
+
+    @include respond(medium) {
+      font-size: 1.4rem;
+    }
+  }
+}
