@@ -7,9 +7,9 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 
-export default function Footer() {
+export default function Footer({ className }) {
   return (
-    <footer className={style.footer}>
+    <footer className={`${className} ${style.footer}`}>
       <div className={style.container}>
         <a href="#" className={style.logoWrapper}>
           <img src="/imgs/tuscanyLogo.png" alt="Logo" />

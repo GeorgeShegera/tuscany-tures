@@ -1,0 +1,12 @@
+.main {
+  display: grid;
+  grid-template-columns: 2.5rem calc(100% - 5rem) 2.5rem;
+}
+
+.spaceBetween {
+  grid-column: 2 / 3;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}

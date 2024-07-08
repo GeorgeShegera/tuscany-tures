@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function () {
+export default function ({ className }) {
   const [swiperStart, setSwiperStart] = useState(true);
   const [swiperEnd, setSwiperEnd] = useState(false);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function () {
   }, []);
 
   return (
-    <section className={style.sectionDest}>
+    <section className={`${className} ${style.sectionDest}`}>
       <div className={style.container}>
         <div className={style.header}>
           <h2>Explore Our Popular Destinantions</h2>

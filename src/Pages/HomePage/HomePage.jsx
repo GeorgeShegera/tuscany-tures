@@ -1,13 +1,17 @@
 import React from "react";
 import HeroSection from "../../Layouts/HomeSections/SectHero/Hero";
 import PopularDestinations from "../../Layouts/HomeSections/SectDestinations/PopularDestinations";
-import { Outlet } from "react-router-dom";
+import Footer from "../../Layouts/Footer/Footer";
+import Reviews from "../../Layouts/ReviewsSection/Reviews";
+import style from "./HomePage.module.scss";
 
 export default function HomePage() {
   return (
-    <main>
-      <HeroSection></HeroSection>
-      <PopularDestinations></PopularDestinations>
+    <main className={style.main}>
+      <HeroSection className={style.fullWidth}></HeroSection>
+      <PopularDestinations className={style.spaceBetween}></PopularDestinations>
+      <Reviews className={style.spaceBetween}></Reviews>
+      <Footer className={style.fullWidth}></Footer>
     </main>
   );
 }

@@ -13,7 +13,7 @@ import { Navigation, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function ({ tourId = null }) {
+export default function ({ tourId = null, className }) {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(true);
   const swiperRef = useRef(null);
@@ -32,7 +32,7 @@ export default function ({ tourId = null }) {
   }, [tourId]);
 
   return (
-    <section className={style.section}>
+    <section className={`${className} ${style.section}`}>
       <div className="container">
         <div className="swiper-header">
           <h2 className="heading-secondary swiper-header__title">
