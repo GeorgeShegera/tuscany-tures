@@ -3,7 +3,6 @@ import style from "./HomeNavMenu.module.css";
 import HeaderLangComp from "../../Components/LangSelector/HeaderLangComp";
 
 export default function HomeNav({ openNav, openSignUp, openLogIn, color }) {
-  console.log(color);
   return (
     <div
       className={`${style.topBarContainer} ${openNav ? style.openNav : ""}`}

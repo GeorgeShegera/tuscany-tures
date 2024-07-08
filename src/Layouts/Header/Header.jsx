@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./Header.module.css";
+import style from "./Header.module.scss";
 import SignUpModal from "../../Components/LoginModals/ModalWindows/SignUpModal/SignUpModal";
 import LogInModal from "../../Components/LoginModals/ModalWindows/LoginModal/LoginModal";
 import ForgotPassModal from "../../Components/LoginModals/ModalWindows/ForgotPassModal/ForgotPassModal";
@@ -19,9 +19,7 @@ export default function HomeHeader(props) {
   const dispatch = useDispatch();
 
   function handleNavBtn() {
-    if (window.innerWidth <= 1200) {
-      setOpenNav(!openNav);
-    }
+    setOpenNav(!openNav);
   }
 
   function handleOpenSignUp() {
@@ -50,18 +48,19 @@ export default function HomeHeader(props) {
             openLogIn={handleOpenLogIn}
             color={props.color}
           ></HomeNav>
-          {openNav ? (
-            <RxCross1
-              className={`${style.mobileBtn} ${style.mobBtnCancel}`}
-              onClick={handleNavBtn}
-            ></RxCross1>
-          ) : (
-            <IoMenu
-              className={`${style.mobileBtn} ${style.mobBtnMenu}`}
-              style={{ color: props.color }}
-              onClick={handleNavBtn}
-            ></IoMenu>
-          )}
+          <div
+            className={`${style.mobileBtn} ${
+              openNav ? style.mobileBtnCancel : ""
+            }`}
+            onClick={handleNavBtn}
+          >
+            <span
+              className={style.menuIcon}
+              style={openNav ? { backgroundColor: props.color } : {}}
+            >
+              &nbsp;
+            </span>
+          </div>
         </div>
       </header>
       <Outlet></Outlet>

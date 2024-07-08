@@ -1,0 +1,114 @@
+@use "/src/sass/abstracts/index" as *;
+
+.homeHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 2rem 3.2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 142rem;
+
+  display: flex;
+  gap: 10rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoTusc {
+  display: block;
+  max-width: 13.3rem;
+
+  img {
+    width: 100%;
+
+    @include respond(medium) {
+      width: 11rem;
+    }
+  }
+}
+
+.mobileBtn {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+  width: 5rem;
+  height: 3rem;
+
+  &:not(.mobileBtnCancel):hover {
+    & .menuIcon::before {
+      top: -1.2rem;
+    }
+    & .menuIcon::after {
+      top: 1.2rem;
+    }
+  }
+
+  @include respond(largest) {
+    display: flex;
+    align-items: center;
+    z-index: 4;
+  }
+
+  .menuIcon {
+    background-color: currentColor;
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 100%;
+      height: 0.3rem;
+      border-radius: 5rem;
+      background-color: currentColor;
+      transition: all 0.1s ease-in;
+
+      @include respond(medium) {
+        height: 0.4rem;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      overflow: hidden;
+    }
+
+    &::before {
+      top: -1rem;
+    }
+    &::after {
+      top: 1rem;
+    }
+  }
+}
+
+.mobileBtnCancel .menuIcon {
+  transition: transform 0.5s ease-out;
+  background-color: transparent !important;
+
+  &::before,
+  &::after {
+    top: 0;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(135deg);
+  }
+}

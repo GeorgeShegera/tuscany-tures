@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./TourCard.module.css";
+import style from "./TourCard.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function TourCard({

@@ -1,5 +1,4 @@
-@import "/src/sass/abstracts/variables";
-@import "/src/sass/base/animations";
+@use "/src/sass/abstracts/index" as *;
 
 .section {
   padding: 5rem 0 12rem 0;
@@ -12,8 +11,9 @@
   text-decoration: none;
   font-size: 1.8rem;
   font-weight: 600;
-  color: $color-gray;
   margin-bottom: 5rem;
+
+  @include link-animation($color-gray, $color-white);
 }
 
 .heroContainer {
