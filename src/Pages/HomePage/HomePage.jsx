@@ -11,7 +11,6 @@ export default function HomePage() {
       <HeroSection className={style.fullWidth}></HeroSection>
       <PopularDestinations className={style.spaceBetween}></PopularDestinations>
       <Reviews className={style.spaceBetween}></Reviews>
-      <Footer className={style.fullWidth}></Footer>
     </main>
   );
 }

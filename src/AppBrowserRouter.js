@@ -7,10 +7,12 @@ const SuspenseLayout = () => (
     <Outlet></Outlet>
   </Suspense>
 );
+
 function App() {
   const HomePage = lazy(() => import("./Pages/HomePage/HomePage"));
   const Redirect = lazy(() => import("./Pages/Redirect/Redirect"));
   const Header = lazy(() => import("./Layouts/Header/Header"));
+  const Footer = lazy(() => import("./Layouts/Footer/Footer"));
   const TourPage = lazy(() => import("./Pages/TourPage/TourPage"));
 
   return (
@@ -21,13 +23,15 @@ function App() {
             path="/"
             element={<Header color={"#fff"} boxShadow={"none"}></Header>}
           >
-            <Route path="/" element={<HomePage></HomePage>}>
-              <Route
-                path="/Home/ResetPassword"
-                element={<Redirect></Redirect>}
-              ></Route>
+            <Route path="/" element={<Footer></Footer>}>
+              <Route path="/" element={<HomePage></HomePage>}>
+                <Route
+                  path="/Home/ResetPassword"
+                  element={<Redirect></Redirect>}
+                ></Route>
+              </Route>
+              <Route path="TourPackages"></Route>
             </Route>
-            <Route path="TourPackages"></Route>
           </Route>
           <Route
             path="/"
@@ -38,7 +42,12 @@ function App() {
               ></Header>
             }
           >
-            <Route path="tours/:tourId" element={<TourPage></TourPage>}></Route>
+            <Route path="/" element={<Footer></Footer>}>
+              <Route
+                path="tours/:tourId"
+                element={<TourPage></TourPage>}
+              ></Route>
+            </Route>
           </Route>
         </Route>
       </Routes>

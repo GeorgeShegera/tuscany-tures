@@ -31,7 +31,6 @@ export default function HomeHeader(props) {
     dispatch(openLogIn());
   }
 
-  console.log(props.boxShadow);
   return (
     <>
       <header

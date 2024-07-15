@@ -18,16 +18,13 @@ export default function TourPage() {
   }, [tourId]);
 
   return (
-    <>
-      <main className={style.main}>
-        <div className="container">
-          <TourHeroSection></TourHeroSection>
-          <TourDetailsSection></TourDetailsSection>
-          <GallerySection></GallerySection>
-          <ReviewsSection tourId={tourId}></ReviewsSection>
-        </div>
-      </main>
-      <Footer></Footer>
-    </>
+    <main className={style.main}>
+      <div className="container">
+        <TourHeroSection></TourHeroSection>
+        <TourDetailsSection></TourDetailsSection>
+        <GallerySection></GallerySection>
+        <ReviewsSection tourId={tourId}></ReviewsSection>
+      </div>
+    </main>
   );
 }
