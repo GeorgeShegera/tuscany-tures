@@ -3,6 +3,9 @@ $color-primary: #fa8b02;
 $color-primary-light: #fcb967;
 $color-primary-dark: #e17d02;
 
+$color-secondary-light: #ffcfa6;
+$color-secondary-dark: #fda674;
+
 $color-gray: #333;
 $color-gray-light: #efefef;
 $color-gray-light-2: #c2c2c2;
@@ -24,7 +27,7 @@ $line-thin-dark: 1px solid $color-gray-light-2;
 $horizontal-padding: 3.2rem;
 
 // Responsive Breakpoints
-$bg-largest: 78em; // 1248px
+$bg-largest: 80em; // 1280px
 $bg-large: 59em; // 944px
 $bg-medium: 45em; // 720px
 $bg-small: 33em; // 528px

@@ -1,0 +1,83 @@
+@use "/src/sass/abstracts/index" as *;
+
+.container {
+  padding-bottom: 21.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+
+  @include respond(medium) {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 10.7rem;
+  }
+}
+
+.photoContainer {
+  max-width: 45rem;
+  min-width: 30rem;
+
+  @include respond(medium) {
+    order: 2;
+    max-width: 30rem;
+  }
+}
+
+.photo {
+  display: block;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  color: $color-gray;
+  max-width: 70rem;
+  gap: 3rem;
+
+  .subTitle {
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    opacity: 0.6;
+  }
+
+  .text {
+    line-height: $relaxed-line-height;
+    font-size: 1.8rem;
+  }
+
+  .info {
+    display: flex;
+    list-style-type: none;
+    gap: 5rem;
+
+    @include respond(medium) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+
+    .item {
+      max-width: 9rem;
+
+      .value {
+        display: block;
+        font-weight: 700;
+        font-size: 3.2rem;
+        color: $color-primary;
+        margin-bottom: 0.6rem;
+      }
+
+      .title {
+        opacity: 0.6;
+        line-height: $normal-line-height;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
