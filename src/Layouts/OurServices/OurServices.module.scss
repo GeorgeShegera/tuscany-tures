@@ -1,0 +1,27 @@
+@use "../../sass/abstracts/index" as *;
+
+.section {
+  margin-bottom: 6.3rem;
+}
+
+.container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.3rem;
+
+  @include respond(largest) {
+    gap: 2rem;
+  }
+
+  @include respond(large) {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    row-gap: 4rem;
+    column-gap: 3rem;
+  }
+
+  @include respond(small) {
+    grid-template-columns: 1fr;
+  }
+}
