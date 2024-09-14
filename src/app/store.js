@@ -3,6 +3,7 @@ import modalReducer from "../Slices/modal/modalSlice";
 import calendarReducer from "../Slices/calendar/CalendarSlice";
 import tours from "../Slices/tours/toursSlice";
 import comments from "../Slices/comments/commentsSlice";
+import services from "../Slices/servicesForm/servicesFormSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     calendar: calendarReducer,
     tours: tours,
     comments: comments,
+    services: services,
   },
 });

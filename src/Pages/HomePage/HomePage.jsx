@@ -4,6 +4,7 @@ import PopularDestinations from "../../Layouts/HomeSections/SectDestinations/Pop
 import SpecialOffers from "../../Layouts/SpeicialOffers/SpecialOffers";
 import OurServices from "../../Layouts/OurServices/OurServices";
 import AboutUs from "../../Layouts/AboutUs/AboutUs";
+import PackageForm from "../../Layouts/PackageFormSection/PackageForm";
 import Reviews from "../../Layouts/ReviewsSection/Reviews";
 import style from "./HomePage.module.scss";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <AboutUs className={style.spaceBetween}></AboutUs>
       <SpecialOffers className={style.fullWidth}></SpecialOffers>
       <OurServices className={style.spaceBetween}></OurServices>
+      <PackageForm className={style.fullWidth}></PackageForm>
       <Reviews className={style.spaceBetween}></Reviews>
     </main>
   );

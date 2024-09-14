@@ -1,3 +1,5 @@
+@use "/src/sass/abstracts/index" as *;
+
 .topBarContainer {
   color: #fff;
   font-size: inherit;
@@ -62,7 +64,7 @@
 .signUpBtn {
   color: #fff !important;
   padding: 1rem 2.4rem;
-  background-color: #fa8b02;
+  background-color: $color-primary;
   border: none;
   border-radius: 50px;
   color: inherit;
@@ -74,7 +76,7 @@
 }
 
 .signUpBtn:hover {
-  background-color: #e17d02;
+  background-color: $color-primary-dark;
 }
 
 .navList {
@@ -95,8 +97,7 @@
   transform: translateX(0);
 }
 
-/* 720px - 1250px */
-@media (min-width: 45em) and (max-width: 78em) {
+@media (min-width: $bg-medium) and (max-width: $bg-largest) {
   .navigation {
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.9);
@@ -124,8 +125,7 @@
   }
 }
 
-/* 1250px */
-@media (max-width: 78em) {
+@include respond(largest) {
   .topBarContainer {
     justify-content: flex-end;
   }
@@ -148,7 +148,7 @@
 }
 
 /* 720px */
-@media (max-width: 45em) {
+@include respond(medium) {
   .topBarContainer {
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.9);

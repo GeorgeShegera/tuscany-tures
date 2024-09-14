@@ -1,0 +1,129 @@
+@use "../../sass/abstracts/index" as *;
+
+.section {
+  background-image: $linear-gradient-1;
+  max-height: 64.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2.5rem;
+  margin-bottom: 15.4rem;
+
+  @include respond(medium) {
+    max-height: none;
+    padding: 4rem 2.5rem;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 147rem;
+  width: 100%;
+  gap: 1.2rem;
+
+  @include respond(medium) {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+.formHeading {
+  text-align: center;
+  margin-bottom: 3.6rem;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 73.4rem;
+}
+
+.form {
+  padding: 3rem;
+  background-color: rgba($color-white, 0.3);
+  border-radius: 2.4rem;
+  width: 100%;
+  min-width: 55rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3rem;
+
+  @include respond(small) {
+    min-width: 0;
+    gap: 1.5rem 1rem;
+  }
+}
+
+.calendar {
+  @include respond(small) {
+    grid-column: 1 / span 2;
+  }
+}
+
+.timeSelector {
+  width: min(100%, 32.2rem);
+
+  @include respond(small) {
+    grid-column: 2 / span 1;
+    grid-row: 2 / 3;
+  }
+}
+
+.imgContainer {
+  min-width: 43rem;
+
+  @media only screen and (max-width: $bg-large) and (min-width: $bg-medium) {
+    display: none;
+  }
+
+  @include respond(small) {
+    min-width: 0;
+    width: 80%;
+  }
+}
+
+.img {
+  display: block;
+  transform: translateY(7rem);
+  width: 100%;
+  max-width: 72.4rem;
+
+  @include respond(medium) {
+    transform: none;
+    max-width: 60rem;
+  }
+}
+
+.serviceType {
+  @include respond(small) {
+    grid-column: 1 / span 2;
+  }
+}
+
+.submitbtn {
+  max-width: 21.2rem;
+  height: 4.7rem;
+  justify-self: center;
+  grid-column: 1 / span 2;
+
+  @include respond(small) {
+    max-width: none;
+  }
+}
+
+@media only screen and (max-width: $bg-large) and (min-width: $bg-medium) {
+  .wrapper {
+    justify-content: center;
+  }
+
+  .formContainer {
+    max-width: 74rem;
+  }
+}

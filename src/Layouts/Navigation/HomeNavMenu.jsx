@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./HomeNavMenu.module.css";
+import style from "./HomeNavMenu.module.scss";
 import HeaderLangComp from "../../Components/LangSelector/HeaderLangComp";
 
 export default function HomeNav({ openNav, openSignUp, openLogIn, color }) {

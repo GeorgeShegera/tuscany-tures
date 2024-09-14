@@ -13,6 +13,16 @@ $color-gray-light-2: #c2c2c2;
 $color-dark: #000;
 $color-white: #fff;
 
+// gradient colors
+$linear-gradient-1: linear-gradient(
+  to right bottom,
+  $color-secondary-light,
+  $color-secondary-dark
+);
+
+// fonts
+$default-font: "Open Sans", sans-serif;
+
 // Line heights
 $tight-line-height: 1.33;
 $snug-line-height: 1.44;

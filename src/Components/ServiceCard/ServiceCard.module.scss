@@ -17,6 +17,11 @@
   height: 30.2rem;
   object-fit: cover;
   border-radius: 24px;
+
+  @include respond(small) {
+    width: 90%;
+    height: auto;
+  }
 }
 
 .cardHeading {

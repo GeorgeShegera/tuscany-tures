@@ -7,6 +7,7 @@ import {
   changeDate,
   getDaysInMonth,
   getDaysOfWeek,
+  getEmptyCells,
 } from "./Calendar.js";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -88,14 +89,12 @@ export default function Calendar() {
     );
 
     // Adding empty cells
-    for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
-      days.push(
-        <div
-          key={`empty-cell-${i}`}
-          className={`${style.calendarCell} ${style.emptyCell}`}
-        ></div>
-      );
-    }
+    const emptyCells = days.push(
+      getEmptyCells(
+        firstDayOfMonth.getDay(),
+        `${style.calendarCell} ${style.emptyCell}`
+      )
+    );
 
     // Adding days
     for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
