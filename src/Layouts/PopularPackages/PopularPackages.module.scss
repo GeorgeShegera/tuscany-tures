@@ -1,0 +1,37 @@
+@use "/src/sass/abstracts/index" as *;
+
+.section {
+  width: 100%;
+  margin-bottom: 12rem;
+  max-width: 142rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 11.7rem;
+}
+
+.heading {
+  align-self: flex-start;
+
+  @include respond(large) {
+    align-self: auto;
+  }
+}
+
+.container {
+  margin-top: 6.3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2rem;
+  width: fit-content;
+
+  @include respond(large) {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2rem;
+  }
+
+  @include respond(small) {
+    grid-template-columns: 1fr;
+  }
+}

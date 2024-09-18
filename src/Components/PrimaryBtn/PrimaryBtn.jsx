@@ -1,11 +1,16 @@
 import React from "react";
 import style from "./PrimaryBtn.module.scss";
 
-export default function PrimaryBtn({ className, children, onClick }) {
+export default function PrimaryBtn({
+  className,
+  children,
+  onClick,
+  IsWhite = false,
+}) {
   return (
     <a
       href="#"
-      className={`${className} ${style.button}`}
+      className={`${className} ${IsWhite ? style.buttonWhite : style.button}`}
       onClick={(e) => {
         e.preventDefault();
         onClick();

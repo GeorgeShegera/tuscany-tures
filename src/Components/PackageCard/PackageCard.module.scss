@@ -1,0 +1,92 @@
+@use "/src/sass/abstracts/index" as *;
+
+.card {
+  border: 1px solid #efefef;
+  border-radius: 24px;
+  overflow: hidden;
+  width: fit-content;
+
+  max-width: 45rem;
+}
+
+.imgWrapper {
+  width: auto;
+}
+.img {
+  width: 100%;
+
+  @include respond(small) {
+    max-width: 35rem;
+  }
+}
+
+.content {
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: column;
+  padding: 2.5rem;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.tagList {
+  list-style: none;
+}
+
+.tag {
+  font-size: 1.8rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 6.4rem;
+
+  @include respond(small) {
+    height: auto;
+    padding: 1rem 0;
+  }
+}
+
+.price {
+  font-weight: 700;
+  font-size: 4.8rem;
+  color: $color-primary;
+  position: relative;
+  width: fit-content;
+
+  &::before,
+  &::after {
+    font-weight: 400;
+    font-size: 2rem;
+    color: rgba($color-gray, 0.5);
+    position: absolute;
+  }
+
+  &::before {
+    transform: translateX(-100%);
+    top: 0.3rem;
+    left: -0.6rem;
+
+    content: "\20AC";
+  }
+
+  &::after {
+    transform: translateX(100%);
+    bottom: 0.5rem;
+    right: -0.6rem;
+
+    content: "/day";
+    font-size: 1.8rem;
+    color: rgba($color-gray, 0.6);
+  }
+}
+
+.icon {
+  fill: $color-primary;
+  width: 2.4rem;
+  height: 2.4rem;
+}

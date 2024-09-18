@@ -7,6 +7,7 @@ import AboutUs from "../../Layouts/AboutUs/AboutUs";
 import PackageForm from "../../Layouts/PackageFormSection/PackageForm";
 import Reviews from "../../Layouts/ReviewsSection/Reviews";
 import style from "./HomePage.module.scss";
+import PopularPackages from "../../Layouts/PopularPackages/PopularPackages";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <SpecialOffers className={style.fullWidth}></SpecialOffers>
       <OurServices className={style.spaceBetween}></OurServices>
       <PackageForm className={style.fullWidth}></PackageForm>
+      <PopularPackages className={style.spaceBetween}></PopularPackages>
       <Reviews className={style.spaceBetween}></Reviews>
     </main>
   );
