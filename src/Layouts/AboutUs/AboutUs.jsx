@@ -1,27 +1,18 @@
 import React from "react";
 import style from "./AboutUs.module.scss";
 
-export default function AboutUs({ className }) {
+export default function AboutUs({ className, subHeading, heading, text, img }) {
   return (
     <section className={`${className} container ${style.container}`}>
       <div className={style.photoContainer}>
-        <img className={style.photo} src="imgs/aboutPicture1.jpg" alt="" />
+        <img className={style.photo} src={img} alt="" />
       </div>
       <div className={style.content}>
         <div className={style.header}>
-          <p className={style.subTitle}>WELCOME TO OUR SITE!</p>
-          <h2 className="heading-secondary">
-            We are the best company for your visit
-          </h2>
+          <p className={style.subTitle}>{subHeading}</p>
+          <h2 className="heading-secondary">{heading}</h2>
         </div>
-        <div className={style.text}>
-          After decades of experience, and a whole life in Lucca, we offer you
-          the most complete tourism service in the city. In addition to having
-          bikes and rickshaws to have as much fun as you want, you have the
-          choice of tour guides with whom to tour and drivers for your every
-          need! We offer packages in the way that you get the most at the lowest
-          price. Book with us and we will always be available for you!
-        </div>
+        <p className={style.text}>{text}</p>
         <ul className={style.info}>
           <li className={style.item}>
             <span className={style.value}>20+</span>

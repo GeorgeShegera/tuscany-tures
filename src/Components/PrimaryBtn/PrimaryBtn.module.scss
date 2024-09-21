@@ -22,7 +22,7 @@
   }
 }
 
-.buttonWhite {
+.buttonTransparent {
   @extend .button;
 
   &:link,
@@ -36,5 +36,27 @@
   &:active {
     color: $color-white;
     background-color: $color-primary;
+  }
+}
+
+.buttonWhite {
+  @extend .button;
+
+  &:link,
+  &:visited {
+    border: 1.5px solid $color-white;
+    background-color: transparent;
+    color: $color-white;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: transparent;
+    transform: translateY(-0.5rem);
+    box-shadow: 0px 1px 15px 5px rgba(0, 0, 0, 0.15);
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
   }
 }

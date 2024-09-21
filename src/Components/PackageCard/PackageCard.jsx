@@ -26,7 +26,7 @@ export default function PackageCard({ img, heading, price, mapTags }) {
             );
           })}
         </ul>
-        <PrimaryBtn IsWhite={true} onClick={(e) => {}}>
+        <PrimaryBtn type="transparent" onClick={(e) => {}}>
           Book Now
         </PrimaryBtn>
       </div>

@@ -14,6 +14,7 @@ function App() {
   const Header = lazy(() => import("./Layouts/Header/Header"));
   const Footer = lazy(() => import("./Layouts/Footer/Footer"));
   const TourPage = lazy(() => import("./Pages/TourPage/TourPage"));
+  const AboutPage = lazy(() => import("./Pages/AboutUs/AbousUs"));
 
   return (
     <BrowserRouter>
@@ -30,9 +31,10 @@ function App() {
                   element={<Redirect></Redirect>}
                 ></Route>
               </Route>
-              <Route path="TourPackages"></Route>
+              <Route path="/About" element={<AboutPage></AboutPage>}></Route>
             </Route>
           </Route>
+
           <Route
             path="/"
             element={

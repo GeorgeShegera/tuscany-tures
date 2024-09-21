@@ -1,10 +1,37 @@
-@use "../abstracts/variables" as *;
+@use "../abstracts/index" as *;
 
 body {
   font-family: $default-font;
   font-weight: 400;
   line-height: 1;
   color: $color-gray;
+}
+
+.hero-heading {
+  font-family: $heading-font-family;
+  font-weight: 800;
+  font-size: 7.2rem;
+  line-height: $tight-line-height;
+
+  @include respond(large) {
+    font-size: 6.4rem;
+  }
+
+  &_sub {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: $color-white;
+    line-height: $tight-line-height;
+
+    @include respond(large) {
+      font-size: 2rem;
+    }
+  }
+
+  &_white {
+    @extend .hero-heading;
+    color: $color-white;
+  }
 }
 
 .heading-primary {

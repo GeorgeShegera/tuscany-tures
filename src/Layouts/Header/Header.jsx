@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Header.module.scss";
 import SignUpModal from "../../Components/LoginModals/ModalWindows/SignUpModal/SignUpModal";
 import LogInModal from "../../Components/LoginModals/ModalWindows/LoginModal/LoginModal";
@@ -10,7 +10,11 @@ import SuccessfullyResetModal from "../../Components/LoginModals/ModalWindows/Su
 import { RxCross1 } from "react-icons/rx";
 import { IoMenu } from "react-icons/io5";
 import HomeNav from "../Navigation/HomeNavMenu.jsx";
-import { openSignUp, openLogIn } from "../../Slices/modal/modalSlice.js";
+import {
+  openSignUp,
+  openLogIn,
+  closeForgotPass,
+} from "../../Slices/modal/modalSlice.js";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 
@@ -31,9 +35,19 @@ export default function HomeHeader(props) {
     dispatch(openLogIn());
   }
 
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpenNav(false);
+    });
+  }, []);
+
   return (
     <>
       <header
+        onKeyDown={(e) => {
+          console.log(e.key);
+          if (e.key === "Escape") setOpenNav(false);
+        }}
         className={style.homeHeader}
         style={{ boxShadow: `${props.boxShadow}` }}
       >
@@ -43,6 +57,7 @@ export default function HomeHeader(props) {
           </a>
           <HomeNav
             openNav={openNav}
+            setOpenNav={setOpenNav}
             openSignUp={handleOpenSignUp}
             openLogIn={handleOpenLogIn}
             color={props.color}

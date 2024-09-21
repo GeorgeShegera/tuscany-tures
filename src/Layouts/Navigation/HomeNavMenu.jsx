@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import style from "./HomeNavMenu.module.scss";
 import HeaderLangComp from "../../Components/LangSelector/HeaderLangComp";
+import { useNavigate } from "react-router-dom";
 
-export default function HomeNav({ openNav, openSignUp, openLogIn, color }) {
+export default function HomeNav({
+  openNav,
+  setOpenNav,
+  openSignUp,
+  openLogIn,
+  color,
+}) {
+  const navigate = useNavigate();
+
   return (
     <div
       className={`${style.topBarContainer} ${openNav ? style.openNav : ""}`}
@@ -11,12 +20,28 @@ export default function HomeNav({ openNav, openSignUp, openLogIn, color }) {
       <nav className={`${style.navigation}`}>
         <ul className={`${style.navList}`}>
           <li>
-            <a href="#" className={style.headerLink}>
+            <a
+              href="#"
+              className={style.headerLink}
+              onClick={(e) => {
+                e.preventDefault();
+                setOpenNav(false);
+                navigate("/");
+              }}
+            >
               Home
             </a>
           </li>
           <li>
-            <a href="#" className={style.headerLink}>
+            <a
+              href="#"
+              className={style.headerLink}
+              onClick={(e) => {
+                e.preventDefault();
+                setOpenNav(false);
+                navigate("/About");
+              }}
+            >
               About Us
             </a>
           </li>
