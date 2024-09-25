@@ -1,0 +1,43 @@
+@use "/src/sass/abstracts/index" as *;
+
+.advantage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 3rem;
+  gap: 1.5rem;
+  color: $color-dark;
+  background-color: rgba($color-white, 0.3);
+  border-radius: 2.4rem;
+
+  font-size: 2rem;
+  font-weight: 600;
+  max-width: 29.2rem;
+  text-align: center;
+  line-height: $tight-line-height;
+  text-transform: capitalize;
+
+  flex: 1 1 0;
+
+  @include respond(large) {
+    font-size: 1.8rem;
+    padding: 2rem;
+  }
+
+  @include respond(medium) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon {
+  width: 6rem;
+  height: 6rem;
+  fill: $color-primary;
+
+  @include respond(large) {
+    width: 5rem;
+    height: 5rem;
+  }
+}

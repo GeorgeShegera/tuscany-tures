@@ -1,0 +1,21 @@
+@use "/src/sass/abstracts/index" as *;
+
+.section {
+  background-image: $linear-gradient-1;
+  padding: 8.3rem 2.5rem;
+}
+
+.container {
+  display: flex;
+  gap: min(3rem, 100%);
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include respond(medium) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+}
