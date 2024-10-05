@@ -5,8 +5,6 @@
 }
 
 .swiper {
-  height: 43rem;
-
   @include respond(small) {
     height: 55rem;
     text-align: center;

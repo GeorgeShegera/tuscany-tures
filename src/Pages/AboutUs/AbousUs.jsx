@@ -3,6 +3,7 @@ import Hero from "../../Layouts/Hero/Hero";
 import PrimaryBtn from "../../Components/PrimaryBtn/PrimaryBtn";
 import AboutUs from "../../Layouts/AboutUs/AboutUs";
 import Advantages from "../../Layouts/Advantages/Advantages";
+import Reviews from "../../Layouts/ReviewsSection/Reviews";
 import style from "./AboutUs.module.scss";
 
 export default function AbousUs() {
@@ -28,6 +29,7 @@ export default function AbousUs() {
         img="imgs/aboutPicture2.png"
       ></AboutUs>
       <Advantages className={"main__section_full-width"}></Advantages>
+      <Reviews className={"main__section_space-between"}></Reviews>
     </main>
   );
 }

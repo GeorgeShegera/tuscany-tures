@@ -1,21 +1,23 @@
-import React from "react";
+import React, { forwardRef, useContext, useEffect } from "react";
 import style from "./PackageForm.module.scss";
 import FormInput from "../../Components/FormInput/FormInput";
 import ServiceTypeSelector from "../../Components/ServiceTypeSelector/ServiceTypeSelector";
 import DateSelector from "../../Components/DateSelector/DateSelector.jsx";
 import ServiceTimePicker from "../../Components/ServiceTimePicker/ServiceTimePicker.jsx";
 import PrimaryBtn from "../../Components/PrimaryBtn/PrimaryBtn.jsx";
+import { SectionRefsContext } from "../../Providers/SectionRefsContext";
 
-export default function PackageForm({ className }) {
+const PackageForm = ({ className }) => {
+  const { sectionForm } = useContext(SectionRefsContext);
+
   return (
-    <section className={`${className} ${style.section}`}>
+    <section className={`${className} ${style.section}`} ref={sectionForm}>
       <div className={style.wrapper}>
-        <form method="post" action="" className={style.formContainer}>
+        <form method="post" action="post" className={style.formContainer}>
           <h2 className={`heading-secondary ${style.formHeading}`}>
             Book Now Bike
           </h2>
           <div className={style.form}>
-            {console.log(window.screen.width)}
             <FormInput
               type="text"
               labelText="Name and Surname"
@@ -69,4 +71,6 @@ export default function PackageForm({ className }) {
       </div>
     </section>
   );
-}
+};
+
+export default PackageForm;

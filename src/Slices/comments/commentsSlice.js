@@ -8,7 +8,6 @@ export const initComments = createAsyncThunk(
   "comment/getComment",
   async (commentId) => {
     const response = await getComment(commentId);
-    console.log("comments: ", response.data);
     return response.data;
   }
 );

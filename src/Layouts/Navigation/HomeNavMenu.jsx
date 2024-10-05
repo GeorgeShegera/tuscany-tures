@@ -8,14 +8,20 @@ export default function HomeNav({
   setOpenNav,
   openSignUp,
   openLogIn,
-  color,
+  isWhite,
 }) {
+  function navigateTo(e, url) {
+    e.preventDefault();
+    setOpenNav(false);
+    navigate(url);
+  }
+
   const navigate = useNavigate();
 
   return (
     <div
       className={`${style.topBarContainer} ${openNav ? style.openNav : ""}`}
-      style={{ color: `${color}` }}
+      style={{ color: !isWhite ? "#333" : "#fff" }}
     >
       <nav className={`${style.navigation}`}>
         <ul className={`${style.navList}`}>
@@ -24,9 +30,7 @@ export default function HomeNav({
               href="#"
               className={style.headerLink}
               onClick={(e) => {
-                e.preventDefault();
-                setOpenNav(false);
-                navigate("/");
+                navigateTo(e, "/");
               }}
             >
               Home
@@ -37,21 +41,31 @@ export default function HomeNav({
               href="#"
               className={style.headerLink}
               onClick={(e) => {
-                e.preventDefault();
-                setOpenNav(false);
-                navigate("/About");
+                navigateTo(e, "/About");
               }}
             >
               About Us
             </a>
           </li>
           <li>
-            <a href="#" className={style.headerLink}>
+            <a
+              href="#"
+              className={style.headerLink}
+              onClick={(e) => {
+                navigateTo(e, "/TourPackages");
+              }}
+            >
               Tour Packages
             </a>
           </li>
           <li>
-            <a href="#" className={style.headerLink}>
+            <a
+              href="#"
+              className={style.headerLink}
+              onClick={(e) => {
+                navigateTo(e, "/ContactUs");
+              }}
+            >
               Contact Us
             </a>
           </li>

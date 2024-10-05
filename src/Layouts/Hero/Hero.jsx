@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./Hero.module.scss";
+import { SectionRefsContext } from "../../Providers/SectionRefsContext";
 
-export default function AboutHero({
-  className,
-  imgUrl,
-  headingText,
-  subHeadingText,
-  children,
-}) {
+const Hero = ({ className, imgUrl, headingText, subHeadingText, children }) => {
+  const { sectionBeforeHeader } = useContext(SectionRefsContext);
+
   return (
     <section
+      ref={sectionBeforeHeader}
       className={`${className} ${style.hero}`}
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(${imgUrl})`,
@@ -22,4 +20,5 @@ export default function AboutHero({
       {children}
     </section>
   );
-}
+};
+export default Hero;

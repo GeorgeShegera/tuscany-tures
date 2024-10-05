@@ -3,27 +3,27 @@ import { useEffect, useRef, useState } from "react";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import TourCard from "../../../Components/TourCard/TourCard";
 
+import { useDispatch, useSelector } from "react-redux";
 import {
-  initTourCards,
-  selectTourCards,
+  initPopularTourCards,
+  selectPopularTourCards,
 } from "../../../Slices/tours/toursSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar } from "swiper/modules";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function ({ className }) {
   const [swiperStart, setSwiperStart] = useState(true);
   const [swiperEnd, setSwiperEnd] = useState(false);
   const dispatch = useDispatch();
-  const tours = useSelector(selectTourCards);
+  const tours = useSelector(selectPopularTourCards);
   const swiperRef = useRef();
 
   useEffect(() => {
-    dispatch(initTourCards());
-    console.log(tours);
+    dispatch(initPopularTourCards(2));
   }, []);
 
   return (

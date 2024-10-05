@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Hero from "../../Layouts/Hero/Hero";
 import PopularDestinations from "../../Layouts/HomeSections/SectDestinations/PopularDestinations";
 import SpecialOffers from "../../Layouts/SpeicialOffers/SpecialOffers";

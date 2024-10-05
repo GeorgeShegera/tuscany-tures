@@ -66,7 +66,6 @@ export function getCalendarCells(
     } else if (tempDate.getTime() > curDate.getTime()) {
       tempClass += clAvailDate;
     }
-    console.log(tempClass, selectedDate !== null, tempDate, selectedDate);
 
     result.push(
       <div

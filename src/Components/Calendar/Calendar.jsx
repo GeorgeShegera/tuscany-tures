@@ -29,8 +29,6 @@ export default function Calendar() {
   );
 
   useEffect(() => {
-    console.log(selectedDate);
-
     // Find available dates
     let newAvailableDates = [];
     for (const schedule of tour.schedules) {

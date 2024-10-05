@@ -15,7 +15,7 @@ export default function PackageCard({ img, heading, price, mapTags }) {
         <ul className={style.tagList}>
           {[...mapTags].map(([key, value], index) => {
             return (
-              <li className={style.tag}>
+              <li className={style.tag} key={`package-card-tag_${key}`}>
                 <svg className={style.icon}>
                   <use
                     xlinkHref={`/svgs/cardSprite.svg#icon-card_${key}`}

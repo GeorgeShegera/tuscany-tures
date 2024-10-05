@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./SpecialOffers.module.scss";
 import PrimaryBtn from "../../Components/PrimaryBtn/PrimaryBtn";
+import { SectionRefsContext } from "../../Providers/SectionRefsContext";
+import { behavior } from "@testing-library/user-event/dist/cjs/event/behavior/registry.js";
 
-function SpecialOffers({ className }) {
+const SpecialOffers = ({ className }) => {
+  const { sectionForm } = useContext(SectionRefsContext);
+
   return (
     <section className={`${className} ${style.section}`}>
       <div className={style.container}>
@@ -15,7 +19,12 @@ function SpecialOffers({ className }) {
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s.
           </p>
-          <PrimaryBtn className={style.btn} onClick={(e) => {}}>
+          <PrimaryBtn
+            className={style.btn}
+            onClick={(e) => {
+              sectionForm.current.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             Contact Us
           </PrimaryBtn>
         </div>
@@ -25,6 +34,6 @@ function SpecialOffers({ className }) {
       </div>
     </section>
   );
-}
+};
 
 export default SpecialOffers;

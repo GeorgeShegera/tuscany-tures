@@ -17,7 +17,6 @@ export default function ModalSignPanel({
         onClick={(e) => {
           if (isLogin) {
           } else {
-            console.log("Hello!!!!!");
             dispatch(createUserAsync());
           }
         }}

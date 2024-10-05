@@ -28,3 +28,49 @@
     }
   }
 }
+
+@import "/src/sass/abstracts/variables";
+
+.infoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: $snug-line-height;
+
+  @media (max-width: $bg-small) {
+    font-size: 1.6rem;
+  }
+
+  .itemName {
+    font-weight: 700;
+  }
+}
+
+%listIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: transparent;
+  stroke-width: 0.5;
+}
+
+.iconStroke {
+  @extend %listIcon;
+
+  stroke: $color-primary;
+  fill: none;
+}
+
+.iconFill {
+  @extend %listIcon;
+
+  stroke: $color-primary;
+  fill: $color-primary;
+}

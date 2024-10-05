@@ -20,7 +20,6 @@ const CalendarSlice = createSlice({
 
     setSelectedTime: (state, action) => {
       state.selectedTime = action.payload;
-      console.log(state.selectedTime);
     },
   },
 });

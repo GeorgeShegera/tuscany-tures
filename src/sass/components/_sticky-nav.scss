@@ -1,0 +1,50 @@
+@use "/src/sass/base/animations" as *;
+@use "src/sass/abstracts/variables" as *;
+
+.header {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 2rem 3.2rem;
+  background-color: rgba($color-white, 0.2);
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+
+  &_sticky {
+    position: fixed;
+    backdrop-filter: blur(1px);
+    background-color: rgba($color-dark, 0.6);
+    color: $color-dark;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+    animation-name: fadeIn, dropHeader;
+
+    &_removal {
+      @extend .header_sticky;
+      animation-name: fadeOut, upHeader;
+    }
+  }
+}
+
+@keyframes dropHeader {
+  from {
+    transform: translateY(-4rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes upHeader {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-4rem);
+  }
+}

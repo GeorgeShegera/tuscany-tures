@@ -1,24 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getTourCards, getTour } from "./toursAPI";
+import { getPopularTourCards, getTour } from "./toursAPI";
 
 const initialState = {
-  tourCards: [],
+  popularTourCards: [],
+
   tour: {
     imgs: [],
     dates: [],
     schedules: [],
     languages: [],
   },
+
+  pagPage: 1,
+  cardsCount: 8,
+  tourCards: [],
 };
 
-export const initTourCards = createAsyncThunk("tour/getTourCards", async () => {
-  const response = await getTourCards();
-  return response.data;
-});
+export const initPopularTourCards = createAsyncThunk(
+  "tour/getPopularTourCards",
+  async (count) => {
+    const response = await getPopularTourCards(count);
+    return response.data;
+  }
+);
 
 export const initTour = createAsyncThunk("tour/getTour", async (tourId) => {
   const response = await getTour(tourId);
-  console.log("Response", response);
   return response.data;
 });
 
@@ -28,8 +35,8 @@ const toursSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(initTourCards.fulfilled, (state, action) => {
-      state.tourCards = action.payload;
+    builder.addCase(initPopularTourCards.fulfilled, (state, action) => {
+      state.popularTourCards = action.payload;
     });
 
     builder.addCase(initTour.fulfilled, (state, action) => {
@@ -40,7 +47,7 @@ const toursSlice = createSlice({
 
 export const {} = toursSlice.actions;
 
-export const selectTourCards = (state) => state.tours.tourCards;
+export const selectPopularTourCards = (state) => state.tours.popularTourCards;
 export const selectTour = (state) => state.tours.tour;
 
 export default toursSlice.reducer;

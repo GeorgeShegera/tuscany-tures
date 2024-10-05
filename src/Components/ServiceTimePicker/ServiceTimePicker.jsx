@@ -51,8 +51,6 @@ export default function ServiceTimePicker({
     newDate.setHours(Number(hours));
 
     dispatch(setTime(newDate.toString()));
-
-    console.log(selectedTime);
   }, [timeString]);
 
   function hoursSlides() {
@@ -62,6 +60,7 @@ export default function ServiceTimePicker({
       const value = String(i).padStart(2, "0");
       res.push(
         <SwiperSlide
+          key={`hours-slide-${i}`}
           className={`service-timer__cell ${
             value === hours && "service-timer__cell_selected"
           }`}
@@ -89,6 +88,7 @@ export default function ServiceTimePicker({
       const value = String(i).padStart(2, "0");
       res.push(
         <SwiperSlide
+          key={`minutes-slide-${i}`}
           className={`service-timer__cell ${
             value === minutes && "service-timer__cell_selected"
           }`}
@@ -170,7 +170,6 @@ export default function ServiceTimePicker({
             direction={"vertical"}
             loop={true}
             slidesPerView={7}
-            releaseOnEdges={true}
             breakpoints={{
               948: {
                 slidesPerView: 7,

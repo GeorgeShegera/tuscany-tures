@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import { Suspense } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { SectionRefsProvider } from "./Providers/SectionRefsContext";
 
 const SuspenseLayout = () => (
   <Suspense fallback={<p>please wait</p>}>
@@ -15,44 +16,40 @@ function App() {
   const Footer = lazy(() => import("./Layouts/Footer/Footer"));
   const TourPage = lazy(() => import("./Pages/TourPage/TourPage"));
   const AboutPage = lazy(() => import("./Pages/AboutUs/AbousUs"));
+  const TourPackages = lazy(() => import("./Pages/TourPackages/TourPackages"));
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SuspenseLayout></SuspenseLayout>}>
-          <Route
-            path="/"
-            element={<Header color={"#fff"} boxShadow={"none"}></Header>}
-          >
-            <Route path="/" element={<Footer></Footer>}>
-              <Route path="/" element={<HomePage></HomePage>}>
+      <SectionRefsProvider>
+        <Routes>
+          <Route path="/" element={<SuspenseLayout></SuspenseLayout>}>
+            <Route path="/" element={<Header></Header>}>
+              <Route path="/" element={<Footer></Footer>}>
+                <Route path="/" element={<HomePage></HomePage>}>
+                  <Route
+                    path="/Home/ResetPassword"
+                    element={<Redirect></Redirect>}
+                  ></Route>
+                </Route>
+                <Route path="/About" element={<AboutPage></AboutPage>}></Route>
+              </Route>
+            </Route>
+
+            <Route path="/" element={<Header isWhite={false}></Header>}>
+              <Route path="/" element={<Footer></Footer>}>
                 <Route
-                  path="/Home/ResetPassword"
-                  element={<Redirect></Redirect>}
+                  path="tours/:tourId"
+                  element={<TourPage></TourPage>}
+                ></Route>
+                <Route
+                  path="TourPackages"
+                  element={<TourPackages></TourPackages>}
                 ></Route>
               </Route>
-              <Route path="/About" element={<AboutPage></AboutPage>}></Route>
             </Route>
           </Route>
-
-          <Route
-            path="/"
-            element={
-              <Header
-                color={"#333"}
-                boxShadow={"inset 0 -2px 0 #efefef"}
-              ></Header>
-            }
-          >
-            <Route path="/" element={<Footer></Footer>}>
-              <Route
-                path="tours/:tourId"
-                element={<TourPage></TourPage>}
-              ></Route>
-            </Route>
-          </Route>
-        </Route>
-      </Routes>
+        </Routes>
+      </SectionRefsProvider>
     </BrowserRouter>
   );
 }

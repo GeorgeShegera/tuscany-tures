@@ -6,5 +6,4 @@ export async function postAccount(username, password, email) {
     password: password,
     email: email,
   });
-  return console.log(response);
 }

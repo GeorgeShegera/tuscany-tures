@@ -42,7 +42,6 @@ export default function () {
       index++;
     }
     setSlidesImgs(newSlidesImgs);
-    console.log(slidesImgs);
   }, [tour]);
 
   return (
