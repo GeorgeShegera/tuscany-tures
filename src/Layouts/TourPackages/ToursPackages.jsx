@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import style from "./ToursPackages.module.scss";
+import { SectionRefsContext } from "../../Providers/SectionRefsContext";
 
 export default function ToursPackages({ className }) {
-  const [offsetY, setOffsetY] = useState(0);
+  const { setIntroSection } = useContext(SectionRefsContext);
+  const toursSection = useRef();
 
   useEffect(() => {
-    const header = document.getElementsByTagName("header");
-    if (header) {
-      setOffsetY(getComputedStyle(header[0]).height);
-    }
-  }, [document.getElementsByTagName("header")]);
+    setIntroSection(toursSection.current);
+  }, []);
 
   return (
-    <section
-      className={`${className} ${style.section}`}
-      style={{
-        marginTop: offsetY,
-      }}
-    >
+    <section ref={toursSection} className={`${className} ${style.section}`}>
       <h2 className="heading-secondary">Tour Packages</h2>
       <div className={style.content}></div>
     </section>

@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import style from "./Hero.module.scss";
 import { SectionRefsContext } from "../../Providers/SectionRefsContext";
 
 const Hero = ({ className, imgUrl, headingText, subHeadingText, children }) => {
-  const { sectionBeforeHeader } = useContext(SectionRefsContext);
+  const heroSection = useRef(null);
+  const { setIntroSection } = useContext(SectionRefsContext);
+
+  useEffect(() => {
+    setIntroSection(heroSection.current);
+  });
 
   return (
     <section
-      ref={sectionBeforeHeader}
+      ref={heroSection}
       className={`${className} ${style.hero}`}
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(${imgUrl})`,
