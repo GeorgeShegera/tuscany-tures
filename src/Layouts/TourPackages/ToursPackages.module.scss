@@ -2,7 +2,14 @@
   padding: 12rem 0;
 }
 
+.heading {
+  margin-bottom: 6rem;
+}
+
 .content {
   display: grid;
-  // grid-auto-columns: ;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 3.3rem;
+  grid-row-gap: 8rem;
 }

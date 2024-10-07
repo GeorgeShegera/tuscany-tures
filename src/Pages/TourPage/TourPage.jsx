@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTour, initTour } from "../../Slices/tours/toursSlice";
+import { useDispatch } from "react-redux";
+import { initTour } from "../../Slices/tours/toursSlice";
 import style from "./TourPage.module.scss";
 import TourHeroSection from "../../Layouts/TourSections/TourHeroSection/TourHeroSection";
 import TourDetailsSection from "../../Layouts/TourSections/TourDetailsSection/TourDetailsSection";
 import GallerySection from "../../Layouts/TourSections/GallerySection/GallerySection";
 import ReviewsSection from "../../Layouts/ReviewsSection/Reviews";
-import Footer from "../../Layouts/Footer/Footer";
+import useHeaderOffset from "../../Hooks/useHeaderOffset";
+
 export default function TourPage() {
   const { tourId } = useParams();
   const dispatch = useDispatch();
-  const tour = useSelector(selectTour);
+  const offsetY = useHeaderOffset();
 
   useEffect(() => {
     dispatch(initTour(tourId));
   }, [tourId]);
 
   return (
-    <main className={style.main}>
+    <main className={style.main} style={{ marginTop: offsetY }}>
       <div className="container">
         <TourHeroSection></TourHeroSection>
         <TourDetailsSection></TourDetailsSection>

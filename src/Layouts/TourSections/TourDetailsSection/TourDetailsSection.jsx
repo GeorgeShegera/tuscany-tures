@@ -35,7 +35,7 @@ function TourDetailsSection() {
             </p>
           </li>
           <li className={style.item}>
-            <svg className={style.iconStroke}>
+            <svg className={`${style.iconStroke} ${style.iconThinkStroke}`}>
               <use xlinkHref="/svgs/tourSprite.svg#icon-tour_location"></use>
             </svg>
             <p className={style.itemName}>Departuring and arriving areas:</p>

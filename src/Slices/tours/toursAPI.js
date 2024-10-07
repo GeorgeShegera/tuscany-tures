@@ -9,6 +9,8 @@ export function getTour(tourId) {
   return axios.get(`${config.serverURL}/getTourWebModel?tourId=${tourId}`);
 }
 
-export function getTourCards(pagPage, cardsCount) {
-  return axios.get(`${config.serverURL}getTourCards/${pagPage}/${cardsCount}`);
+export function getTourCards({ pageNumber, cardsCount }) {
+  return axios.get(
+    `${config.serverURL}/getTourCards/${pageNumber}/${cardsCount}`
+  );
 }

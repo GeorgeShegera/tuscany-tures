@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getPopularTourCards, getTour } from "./toursAPI";
+import { getPopularTourCards, getTour, getTourCards } from "./toursAPI";
 
 const initialState = {
   popularTourCards: [],
@@ -11,8 +11,6 @@ const initialState = {
     languages: [],
   },
 
-  pagPage: 1,
-  cardsCount: 8,
   tourCards: [],
 };
 
@@ -29,6 +27,14 @@ export const initTour = createAsyncThunk("tour/getTour", async (tourId) => {
   return response.data;
 });
 
+export const initTourCards = createAsyncThunk(
+  "tour/getTourCards",
+  async ({ pageNumber, cardsCount }) => {
+    const response = await getTourCards({ pageNumber, cardsCount });
+    return response.data;
+  }
+);
+
 const toursSlice = createSlice({
   name: "tours",
   initialState,
@@ -42,6 +48,10 @@ const toursSlice = createSlice({
     builder.addCase(initTour.fulfilled, (state, action) => {
       state.tour = action.payload;
     });
+
+    builder.addCase(initTourCards.fulfilled, (state, action) => {
+      state.tourCards = action.payload;
+    });
   },
 });
 
@@ -49,5 +59,6 @@ export const {} = toursSlice.actions;
 
 export const selectPopularTourCards = (state) => state.tours.popularTourCards;
 export const selectTour = (state) => state.tours.tour;
+export const selectTourCards = (state) => state.tours.tourCards;
 
 export default toursSlice.reducer;

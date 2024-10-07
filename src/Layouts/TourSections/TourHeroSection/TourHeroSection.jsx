@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import style from "./TourHeroSection.module.scss";
@@ -6,14 +6,21 @@ import { selectTour } from "../../../Slices/tours/toursSlice.js";
 import Calendar from "../../../Components/Calendar/Calendar.jsx";
 import TimerSelector from "../../../Components/TimerSelector/TimeSelector.jsx";
 import PrimaryBtn from "../../../Components/PrimaryBtn/PrimaryBtn.jsx";
+import { SectionRefsContext } from "../../../Providers/SectionRefsContext.js";
 
 function TourHeroSection() {
   const navigation = useNavigate();
   const tour = useSelector(selectTour);
   const [imgStates, setImgsStates] = useState([true, false, false, false]);
+  const { setIntroSection } = useContext(SectionRefsContext);
+  const heroSection = useRef();
+
+  useEffect(() => {
+    setIntroSection(heroSection.current);
+  }, [heroSection]);
 
   return (
-    <section className={style.section}>
+    <section className={style.section} ref={heroSection}>
       <a
         href="#"
         className={style.backBtn}
