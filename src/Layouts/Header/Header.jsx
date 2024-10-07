@@ -12,47 +12,51 @@ import { openSignUp, openLogIn } from "../../Slices/modal/modalSlice.js";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { SectionRefsContext } from "../../Providers/SectionRefsContext";
-import { InView, useInView } from "react-intersection-observer";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
+import { useInView } from "react-intersection-observer";
 
 export default function HomeHeader({ isWhite = true }) {
+  const { introSection, setHeader } = useContext(SectionRefsContext);
   const [openNav, setOpenNav] = useState(false);
   const dispatch = useDispatch();
-  const { sectionBeforeHeader } = useContext(SectionRefsContext);
-  const [sticky, setIsSticky] = useState("none");
+  const [sticky, setSticky] = useState("none");
   const headerRef = useRef(null);
 
   const { ref: inViewRef, inView } = useInView({
     initialInView: true,
     root: null,
-    threshold: 0,
     rootMargin: `-${
       headerRef.current === null
         ? `0px`
         : getComputedStyle(headerRef.current).height
     }`,
     onChange: function (inView, entry) {
-      if (entry.boundingClientRect.y === 0) return;
+      if (entry.boundingClientRect.top >= 0 || !introSection) {
+        setSticky("none");
+        return;
+      }
       if (!entry.isIntersecting) {
-        setIsSticky("sticky");
+        setSticky("sticky");
       } else {
-        setIsSticky("removal");
-        setTimeout(() => setIsSticky("none"), 300);
+        setSticky("removal");
+        setTimeout(() => setSticky("none"), 300);
       }
     },
   });
 
   useEffect(() => {
-    inViewRef(sectionBeforeHeader.current);
-  }, [sectionBeforeHeader.current]);
+    if (introSection === null) {
+      setSticky("none");
+      return;
+    }
+    inViewRef(introSection);
+  }, [introSection]);
+
+  useEffect(() => {
+    if (openNav) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+  }, [openNav]);
 
   function handleNavBtn() {
-    if (!openNav) disableBodyScroll(headerRef);
-    else enableBodyScroll(headerRef);
     setOpenNav(!openNav);
   }
 
@@ -69,6 +73,8 @@ export default function HomeHeader({ isWhite = true }) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setOpenNav(false);
     });
+
+    setHeader(headerRef.current);
   }, []);
 
   return (
@@ -78,14 +84,13 @@ export default function HomeHeader({ isWhite = true }) {
         onKeyDown={(e) => {
           if (e.key === "Escape") setOpenNav(false);
         }}
-        className={`header ${
+        className={`${!isWhite ? "header_white" : "header"} ${
           sticky === "sticky"
             ? "header_sticky"
             : sticky === "removal"
             ? "header_sticky_removal"
             : ""
         }`}
-        style={{ boxShadow: !isWhite ? "inset 0 -2px 0 #efefef" : "none" }}
       >
         <div className={style.headerContainer}>
           <a href="#" className={style.logoTusc}>
@@ -96,7 +101,6 @@ export default function HomeHeader({ isWhite = true }) {
             setOpenNav={setOpenNav}
             openSignUp={handleOpenSignUp}
             openLogIn={handleOpenLogIn}
-            isWhite={isWhite}
           ></HomeNav>
           <div
             className={`${style.mobileBtn} ${
@@ -104,14 +108,7 @@ export default function HomeHeader({ isWhite = true }) {
             }`}
             onClick={handleNavBtn}
           >
-            <span
-              className={style.menuIcon}
-              style={{
-                color: !openNav && !isWhite ? "#333" : "currentcolor",
-              }}
-            >
-              &nbsp;
-            </span>
+            <span className={style.menuIcon}>&nbsp;</span>
           </div>
         </div>
       </header>

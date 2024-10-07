@@ -8,10 +8,10 @@ export default function HomeNav({
   setOpenNav,
   openSignUp,
   openLogIn,
-  isWhite,
 }) {
   function navigateTo(e, url) {
     e.preventDefault();
+    window.scrollTo(0, 0);
     setOpenNav(false);
     navigate(url);
   }
@@ -19,10 +19,7 @@ export default function HomeNav({
   const navigate = useNavigate();
 
   return (
-    <div
-      className={`${style.topBarContainer} ${openNav ? style.openNav : ""}`}
-      style={{ color: !isWhite ? "#333" : "#fff" }}
-    >
+    <div className={`${style.topBarContainer} ${openNav ? style.openNav : ""}`}>
       <nav className={`${style.navigation}`}>
         <ul className={`${style.navList}`}>
           <li>

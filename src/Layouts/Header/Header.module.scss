@@ -1,9 +1,6 @@
 @use "/src/sass/abstracts/index" as *;
 @use "/src/sass/base/animations" as *;
 
-.homeHeader {
-}
-
 .headerContainer {
   position: relative;
   width: 100%;
@@ -29,11 +26,11 @@
 }
 
 .mobileBtn {
+  color: currentColor;
   display: none;
   cursor: pointer;
-  color: #fff;
-  width: 5rem;
-  height: 3rem;
+  flex: 0 0 30px;
+  height: 30px;
 
   &:not(.mobileBtnCancel):hover {
     & .menuIcon::before {
@@ -55,9 +52,12 @@
     background-color: currentColor;
     position: relative;
 
+    user-select: none;
+
     &,
     &::before,
     &::after {
+      transform-origin: center left;
       display: inline-block;
       width: 100%;
       height: 0.3rem;
@@ -88,21 +88,20 @@
 }
 
 .mobileBtnCancel {
+  color: $color-white;
+
   .menuIcon {
     transition: transform 0.5s ease-out;
     background-color: transparent !important;
 
-    &::before,
-    &::after {
-      top: 0;
-    }
-
     &::before {
-      transform: rotate(45deg);
+      top: -1.2rem;
+      transform: rotate(40deg);
     }
 
     &::after {
-      transform: rotate(-45deg);
+      top: 1.2rem;
+      transform: rotate(-40deg);
     }
   }
 }
