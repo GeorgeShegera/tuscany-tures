@@ -23,21 +23,23 @@ export default function ToursPackages({ className }) {
 
   return (
     <section ref={toursSection} className={`${className} ${style.section}`}>
-      <h2 className={`heading-secondary ${style.heading}`}>Tour Packages</h2>
-      <div className={style.content}>
-        {tourCards.map((tour, index) => (
-          <TourCard
-            key={`tour-card_${tour.id}`}
-            id={tour.id}
-            imgAddress={tour.img}
-            title={tour.name}
-            price={tour.price}
-            dateType={tour.scheduleType}
-            minGroupNumber={tour.minNumberOfGroup}
-            maxGroupNumber={tour.maxNumberOfGroup}
-            description={tour.description}
-          ></TourCard>
-        ))}
+      <div className={style.container}>
+        <h2 className={`heading-secondary ${style.heading}`}>Tour Packages</h2>
+        <div className={style.content}>
+          {tourCards.map((tour, index) => (
+            <TourCard
+              key={`tour-card_${tour.id}`}
+              id={tour.id}
+              imgAddress={tour.img}
+              title={tour.name}
+              price={tour.price}
+              dateType={tour.scheduleType}
+              minGroupNumber={tour.minNumberOfGroup}
+              maxGroupNumber={tour.maxNumberOfGroup}
+              description={tour.description}
+            ></TourCard>
+          ))}
+        </div>
       </div>
     </section>
   );

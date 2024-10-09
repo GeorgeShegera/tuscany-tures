@@ -1,0 +1,5 @@
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 141.9rem;
+}
