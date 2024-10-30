@@ -1,13 +1,14 @@
 import style from "./PopularDestionations.module.css";
 import { useEffect, useRef, useState } from "react";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
-import TourCard from "../../../Components/TourCard/TourCard";
+import TourCard from "../../Components/TourCard/TourCard";
+import useRevealingElements from "../../Hooks/useRevealingElements";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
   initPopularTourCards,
   selectPopularTourCards,
-} from "../../../Slices/tours/toursSlice";
+} from "../../Slices/tours/toursSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar } from "swiper/modules";
 
@@ -21,13 +22,20 @@ export default function ({ className }) {
   const dispatch = useDispatch();
   const tours = useSelector(selectPopularTourCards);
   const swiperRef = useRef();
+  const sectionRef = useRef();
+  const inView = useRevealingElements(sectionRef);
 
   useEffect(() => {
     dispatch(initPopularTourCards(2));
   }, []);
 
   return (
-    <section className={`${className} ${style.sectionDest}`}>
+    <section
+      ref={sectionRef}
+      className={`${className} ${style.sectionDest} ${
+        inView ? "section" : "section_hidden"
+      }`}
+    >
       <div className={style.container}>
         <div className={style.header}>
           <h2>Explore Our Popular Destinantions</h2>

@@ -2,13 +2,17 @@ import React from "react";
 import style from "./ModalSignPanel.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { createUserAsync } from "../../../../Slices/modal/modalSlice";
+import { closeLogIn } from "../../../../Slices/modal/modalSlice";
+import { loginUserAsync } from "../../../../Slices/user/UserSlice";
 import PrimaryBtn from "../../../PrimaryBtn/PrimaryBtn";
 
 export default function ModalSignPanel({
   mainContent,
   secondContent,
   isLogin,
+  data,
+  successNotification,
+  errorNotification,
 }) {
   const dispatch = useDispatch();
   return (
@@ -16,8 +20,18 @@ export default function ModalSignPanel({
       <PrimaryBtn
         onClick={(e) => {
           if (isLogin) {
+            dispatch(loginUserAsync(data)).then((resp) => {
+              console.log(resp);
+              console.log(typeof resp);
+              if (resp.error) {
+                errorNotification();
+              } else {
+                successNotification();
+                dispatch(closeLogIn());
+              }
+            });
           } else {
-            dispatch(createUserAsync());
+            // dispatch(createUserAsync());
           }
         }}
       >

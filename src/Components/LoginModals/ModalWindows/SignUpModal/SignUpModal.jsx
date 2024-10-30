@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import myStyle from "./SignUpModal.module.css";
 import { RxCross2 } from "react-icons/rx";
 import ModalInput from "../../ModalComponents/ModalInput/ModalInput";
@@ -15,16 +15,22 @@ import {
   selectEmailModalSignUp,
 } from "../../../../Slices/modal/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
+import useScrollBlock from "../../../../Hooks/useScrollBlock";
+import useClosePopUp from "../../../../Hooks/useClosePopUp";
 
 function SignUpModal() {
   const isOpen = useSelector(selectOpenSignUp);
   const name = useSelector(selectNameModalSignUp);
   const email = useSelector(selectEmailModalSignUp);
   const password = useSelector(selectPasswordModalSignUp);
+  const modalWnd = useRef();
   const dispatch = useDispatch();
+  useScrollBlock(isOpen);
+  useClosePopUp(modalWnd, () => dispatch(closeSignUp()));
+
   return (
     <div className={`modal-wrapper ${isOpen ? "open" : "close"}`}>
-      <form className="modal">
+      <form ref={modalWnd} className="modal">
         <div className="modal__header">
           <h2 className="modal__title">Create Account</h2>
           <RxCross2

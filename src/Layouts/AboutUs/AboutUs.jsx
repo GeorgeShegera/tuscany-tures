@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import style from "./AboutUs.module.scss";
+import useRevealingElements from "../../Hooks/useRevealingElements";
+import { InView } from "react-intersection-observer";
 
 export default function AboutUs({ className, subHeading, heading, text, img }) {
+  const sectionAboutUs = useRef();
+  const inView = useRevealingElements(sectionAboutUs);
+
   return (
-    <section className={`${className} container ${style.container}`}>
+    <section
+      ref={sectionAboutUs}
+      className={`${className} container ${style.container} ${
+        inView ? "section" : "section_hidden"
+      }`}
+    >
       <div className={style.photoContainer}>
         <img className={style.photo} src={img} alt="" />
       </div>

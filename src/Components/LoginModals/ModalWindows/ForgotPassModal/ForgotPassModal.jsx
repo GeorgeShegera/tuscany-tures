@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   selectOpenForgotPass,
   selectEmailModalReset,
@@ -10,14 +10,20 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import ModalInput from "../../ModalComponents/ModalInput/ModalInput";
 import PrimaryBtn from "../../../PrimaryBtn/PrimaryBtn";
+import useScrollBlock from "../../../../Hooks/useScrollBlock";
+import useClosePopUp from "../../../../Hooks/useClosePopUp";
 
 function ForgotPassModal() {
   const isOpen = useSelector(selectOpenForgotPass);
   const email = useSelector(selectEmailModalReset);
   const dispatch = useDispatch();
+  const modalWnd = useRef();
+  useScrollBlock(isOpen);
+  useClosePopUp(modalWnd, () => dispatch(closeForgotPass()));
+
   return (
     <div className={`modal-wrapper ${isOpen ? "open" : "close"}`}>
-      <form className="modal reset-pass__container">
+      <form ref={modalWnd} className="modal reset-pass__container">
         <div className="reset-pass__icon-key">
           <svg
             width="24"

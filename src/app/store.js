@@ -4,6 +4,7 @@ import calendarReducer from "../Slices/calendar/CalendarSlice";
 import tours from "../Slices/tours/toursSlice";
 import comments from "../Slices/comments/commentsSlice";
 import services from "../Slices/servicesForm/servicesFormSlice";
+import user from "../Slices/user/UserSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     tours: tours,
     comments: comments,
     services: services,
+    user: user,
   },
 });

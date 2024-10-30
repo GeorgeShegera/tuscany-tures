@@ -19,7 +19,7 @@ export default function TourPage() {
   }, [tourId]);
 
   return (
-    <main className={style.main} style={{ marginTop: offsetY }}>
+    <main className={style.main} style={{ paddingTop: offsetY }}>
       <div className="container">
         <TourHeroSection></TourHeroSection>
         <TourDetailsSection></TourDetailsSection>

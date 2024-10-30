@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Input from "../../ModalComponents/ModalInput/ModalInput";
 import { useNavigate } from "react-router-dom";
 import PrimaryBtn from "../../../PrimaryBtn/PrimaryBtn";
+import useScrollBlock from "../../../../Hooks/useScrollBlock";
 
 function NewPassModal() {
   const isOpen = useSelector(selectOpenNewPass);
@@ -20,6 +21,7 @@ function NewPassModal() {
   const confirmPassword = useSelector(selectConfirmPasswordModalNewPass);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useScrollBlock(isOpen);
 
   return (
     <div className={`modal-wrapper ${isOpen ? "open" : "close"}`}>

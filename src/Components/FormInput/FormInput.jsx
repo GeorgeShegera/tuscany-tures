@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import style from "./FormInput.module.scss";
 
 export default function FormInput({
+  id,
+  className,
   type,
   labelText,
   placeholder,
@@ -13,10 +15,14 @@ export default function FormInput({
         {labelText}
       </label>
       <input
-        id={`#formInput${type}`}
-        className="service-input__element"
+        id={id ? id : `#formInput${type}`}
+        className={`${className} service-input__element`}
         type={type}
-        placeholder={window.innerWidth > 1060 ? placeholder : placeholderShort}
+        placeholder={
+          window.innerWidth > 1060 || !placeholderShort
+            ? placeholder
+            : placeholderShort
+        }
       ></input>
     </div>
   );

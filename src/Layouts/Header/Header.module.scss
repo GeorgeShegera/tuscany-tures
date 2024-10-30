@@ -105,3 +105,11 @@
     }
   }
 }
+
+.userContainer {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}

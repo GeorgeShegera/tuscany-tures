@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   selectOpenCheckEmail,
   selectEmailModalReset,
@@ -7,14 +7,20 @@ import {
 } from "../../../../Slices/modal/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import PrimaryBtn from "../../../PrimaryBtn/PrimaryBtn";
+import useScrollBlock from "../../../../Hooks/useScrollBlock";
+import useClosePopUp from "../../../../Hooks/useClosePopUp";
 
 export default function CheckEmailModal() {
   const isOpen = useSelector(selectOpenCheckEmail);
   const email = useSelector(selectEmailModalReset);
+  const modalWnd = useRef();
   const dispatch = useDispatch();
+  useScrollBlock(isOpen);
+  useClosePopUp(modalWnd, () => dispatch(closeCheckEmail()));
+
   return (
     <div className={`modal-wrapper ${isOpen ? "open" : "close"}`}>
-      <form className="modal reset-pass__container">
+      <form ref={modalWnd} className="modal reset-pass__container">
         <div className="reset-pass__icon-key">
           <svg
             width="20"

@@ -11,6 +11,7 @@ import {
   changeDate,
 } from "../Calendar/Calendar.js";
 import { LuCalendarDays } from "react-icons/lu";
+import useClosePopUp from "../../Hooks/useClosePopUp.js";
 
 export default function DateSelector({
   type,
@@ -26,20 +27,7 @@ export default function DateSelector({
   const [calendarDate, setCalendarDate] = useState(new Date());
   const [monthCells, setMonthCells] = useState();
 
-  useEffect(() => {
-    let handler = (e) => {
-      if (
-        !dateInput.current.contains(e.target) &&
-        !selectorList.current.contains(e.target)
-      ) {
-        setOpenDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+  useClosePopUp(dateInput, () => setOpenDropdown(false));
 
   useEffect(() => {
     if (!calendarDate) return;

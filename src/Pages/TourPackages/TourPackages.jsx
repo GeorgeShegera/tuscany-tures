@@ -11,7 +11,7 @@ export default function TourPackages() {
     <main
       className="main"
       style={{
-        marginTop: offsetY,
+        paddingTop: offsetY,
       }}
     >
       <ToursPackages className="main__section_space-between"></ToursPackages>

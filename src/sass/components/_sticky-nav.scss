@@ -2,13 +2,14 @@
 @use "src/sass/abstracts/variables" as *;
 
 .header {
+  width: 100%;
   color: $color-white;
   z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
 
-  width: 100%;
   padding: 2rem 3.2rem;
   background-color: rgba($color-white, 0.2);
   font-size: 2rem;
@@ -24,11 +25,11 @@
   }
 
   &_sticky {
+    width: 100vw;
     box-shadow: none;
     position: fixed;
     backdrop-filter: blur(1px);
     background-color: rgba($color-dark, 0.6);
-    // color: $color-dark;
     color: $color-white;
     animation-timing-function: ease-in;
     animation-duration: 0.3s;

@@ -4,6 +4,7 @@ import { SectionRefsContext } from "../../Providers/SectionRefsContext";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTourCards, initTourCards } from "../../Slices/tours/toursSlice";
 import TourCard from "../../Components/TourCard/TourCard";
+import useRevealingElements from "../../Hooks/useRevealingElements";
 
 export default function ToursPackages({ className }) {
   const { setIntroSection } = useContext(SectionRefsContext);
@@ -12,6 +13,7 @@ export default function ToursPackages({ className }) {
   const [pageNumber, setPageNumber] = useState(0);
   const [cardsCount, setCardsCount] = useState(8);
   const dispatch = useDispatch();
+  const inView = useRevealingElements(toursSection);
 
   useEffect(() => {
     setIntroSection(toursSection.current);
@@ -22,7 +24,12 @@ export default function ToursPackages({ className }) {
   }, [pageNumber, cardsCount]);
 
   return (
-    <section ref={toursSection} className={`${className} ${style.section}`}>
+    <section
+      ref={toursSection}
+      className={`${className} ${style.section} ${
+        inView ? "section" : "section_hidden"
+      }`}
+    >
       <div className={style.container}>
         <h2 className={`heading-secondary ${style.heading}`}>Tour Packages</h2>
         <div className={style.content}>

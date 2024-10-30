@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Hero from "../../Layouts/Hero/Hero";
-import PopularDestinations from "../../Layouts/HomeSections/SectDestinations/PopularDestinations";
+import PopularDestinations from "../../Layouts/PopularDestinations/PopularDestinations";
 import SpecialOffers from "../../Layouts/SpeicialOffers/SpecialOffers";
 import OurServices from "../../Layouts/OurServices/OurServices";
 import AboutUs from "../../Layouts/AboutUs/AboutUs";

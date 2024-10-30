@@ -26,7 +26,7 @@ function TourHeroSection() {
         className={style.backBtn}
         onClick={(e) => {
           e.preventDefault();
-          navigation("/");
+          navigation(-1);
         }}
       >
         &larr; Back

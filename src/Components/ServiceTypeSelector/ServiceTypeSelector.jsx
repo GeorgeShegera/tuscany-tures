@@ -5,6 +5,7 @@ import {
   selectServiceType,
   setServiceType,
 } from "../../Slices/servicesForm/servicesFormSlice";
+import useClosePopUp from "../../Hooks/useClosePopUp";
 
 export default function ServiceTypeSelector({
   className,
@@ -18,19 +19,7 @@ export default function ServiceTypeSelector({
   const dispatch = useDispatch();
   const serviceType = useSelector(selectServiceType);
 
-  useEffect(() => {
-    let handler = (e) => {
-      if (!selectorList.current.contains(e.target)) {
-        setOpenDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+  useClosePopUp(selectorList, () => setOpenDropdown(false));
 
   const checkSetValue = () => serviceType !== null;
 

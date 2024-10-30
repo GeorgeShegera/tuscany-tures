@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postAccount } from "./modalPostAPI";
 
 const initialState = {
   openSignUp: false,
@@ -17,18 +16,6 @@ const initialState = {
   newPasswordModalNewPass: "",
   confirmPasswordModalNewPass: "",
 };
-
-export const createUserAsync = createAsyncThunk(
-  "modal/modalPostAPI",
-  async (nameModalSignUp, passwordModalSignUp, emailModalSignUp) => {
-    const response = await postAccount(
-      nameModalSignUp,
-      passwordModalSignUp,
-      emailModalSignUp
-    );
-    return response;
-  }
-);
 
 const modalSlice = createSlice({
   name: "modal",
@@ -101,10 +88,6 @@ const modalSlice = createSlice({
       state.confirmPasswordModalNewPass = action.payload;
     },
   },
-
-  extraReducers: (builder) => {
-    builder.addCase(createUserAsync.fulfilled, () => {});
-  },
 });
 
 export const {
@@ -149,4 +132,5 @@ export const selectNewPasswordModalNewPass = (state) =>
   state.modal.newPasswordModalNewPass;
 export const selectConfirmPasswordModalNewPass = (state) =>
   state.modal.confirmPasswordModalNewPass;
+
 export default modalSlice.reducer;

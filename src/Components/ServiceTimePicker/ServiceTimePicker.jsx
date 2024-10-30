@@ -10,6 +10,7 @@ import {
   setTime,
 } from "../../Slices/servicesForm/servicesFormSlice";
 import { useDispatch, useSelector } from "react-redux";
+import useClosePopUp from "../../Hooks/useClosePopUp";
 
 export default function ServiceTimePicker({
   type,
@@ -29,18 +30,8 @@ export default function ServiceTimePicker({
     /[0-5]/,
     /[0-9]/,
   ];
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!selectorList.current.contains(e.target)) {
-        setOpenDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
+  useClosePopUp(selectorList, () => {
+    setOpenDropdown(false);
   });
 
   useEffect(() => {
