@@ -20,6 +20,7 @@ export default function HomeNav({
 
   const navigate = useNavigate();
   const userToken = useSelector(selectUserToken);
+  const [openUserMenu, setOpenUserMenu] = useState(false);
 
   return (
     <div
@@ -104,12 +105,56 @@ export default function HomeNav({
           </button>
         </div>
       ) : (
-        <div
+        <button
           className={style.btnUser}
           style={{
             backgroundImage: `url(${userToken.avatar})`,
           }}
-        ></div>
+          onMouseEnter={() => {
+            setOpenUserMenu(true);
+          }}
+          onMouseLeave={() => {
+            setOpenUserMenu(false);
+          }}
+          onClick={() => {
+            setOpenUserMenu(!openUserMenu);
+          }}
+        >
+          <div
+            className={`${
+              openUserMenu
+                ? style.userOptionsWraper
+                : style.userOptionsContainerHidden
+            }`}
+          >
+            <div className={`${style.userOptionsContainer}`}>
+              <div className={style.userOption}>
+                <svg className={style.icon}>
+                  <use
+                    xlinkHref={`/svgs/cardSprite.svg#icon-card_ticket`}
+                  ></use>
+                </svg>
+                <span></span>My Tickets
+              </div>
+              <div className={style.userOption}>
+                <svg className={style.icon}>
+                  <use
+                    xlinkHref={`/svgs/userSprite.svg#icon-user_settings`}
+                  ></use>
+                </svg>
+                Options
+              </div>
+              <div className={style.userOption}>
+                <svg className={style.icon}>
+                  <use
+                    xlinkHref={`/svgs/userSprite.svg#icon-user_logout`}
+                  ></use>
+                </svg>
+                Logout
+              </div>
+            </div>
+          </div>
+        </button>
       )}
     </div>
   );

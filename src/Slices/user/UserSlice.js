@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { postAccount, loginApiAsync } from "./UserAPI";
 
 const initialState = {
-  userToken: null,
+  userToken: JSON.parse(localStorage.getItem("userToken")),
 };
 
 // Only one element could be passed
@@ -34,7 +34,7 @@ const UserSlice = createSlice({
   extraReducers: (builder) => {
     // builder.addCase(createUserAsync.fulfilled, () => {});
     builder.addCase(loginUserAsync.fulfilled, (state, action) => {
-      console.log(state, action);
+      localStorage.setItem("userToken", JSON.stringify(action.payload));
       state.userToken = action.payload;
     });
   },
