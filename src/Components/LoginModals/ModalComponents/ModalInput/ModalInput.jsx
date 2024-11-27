@@ -10,6 +10,7 @@ export default function ModalInput({
   isPassword,
   value,
   setValue,
+  id,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function ModalInput({
         <input
           type={isPassword ? (showPassword ? "text" : "password") : "text"}
           placeholder={placeholder}
+          id={id}
           className={style.inputModal}
           value={value}
           onChange={(e) => {

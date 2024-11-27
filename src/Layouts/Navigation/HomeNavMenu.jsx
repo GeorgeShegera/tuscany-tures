@@ -3,7 +3,8 @@ import style from "./HomeNavMenu.module.scss";
 import HeaderLangComp from "../../Components/LangSelector/HeaderLangComp";
 import { useNavigate } from "react-router-dom";
 import { selectUserToken } from "../../Slices/user/UserSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { unAuthrize } from "../../Slices/user/UserSlice";
 
 export default function HomeNav({
   openNav,
@@ -21,6 +22,7 @@ export default function HomeNav({
   const navigate = useNavigate();
   const userToken = useSelector(selectUserToken);
   const [openUserMenu, setOpenUserMenu] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -89,6 +91,7 @@ export default function HomeNav({
         <div className={style.authContainer}>
           <button
             className={`${style.logInBtn} ${style.loginBtn}`}
+            id="btnLogin"
             onClick={() => {
               openLogIn();
             }}
@@ -128,30 +131,35 @@ export default function HomeNav({
             }`}
           >
             <div className={`${style.userOptionsContainer}`}>
-              <div className={style.userOption}>
+              <a className={style.userOption}>
                 <svg className={style.icon}>
                   <use
                     xlinkHref={`/svgs/cardSprite.svg#icon-card_ticket`}
                   ></use>
                 </svg>
-                <span></span>My Tickets
-              </div>
-              <div className={style.userOption}>
+                My Tickets
+              </a>
+              <a className={style.userOption}>
                 <svg className={style.icon}>
                   <use
                     xlinkHref={`/svgs/userSprite.svg#icon-user_settings`}
                   ></use>
                 </svg>
                 Options
-              </div>
-              <div className={style.userOption}>
+              </a>
+              <button
+                className={style.userOption}
+                onClick={() => {
+                  dispatch(unAuthrize());
+                }}
+              >
                 <svg className={style.icon}>
                   <use
                     xlinkHref={`/svgs/userSprite.svg#icon-user_logout`}
                   ></use>
                 </svg>
                 Logout
-              </div>
+              </button>
             </div>
           </div>
         </button>

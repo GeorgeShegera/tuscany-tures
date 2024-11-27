@@ -22,6 +22,8 @@ export const loginUserAsync = createAsyncThunk(
   "modalAPI/loginApiAsync",
   async ({ login, password }) => {
     const response = await loginApiAsync(login, password);
+    response.expires = new Date(response.expires).getTime();
+    console.log("expires", response);
     return response;
   }
 );
@@ -29,7 +31,12 @@ export const loginUserAsync = createAsyncThunk(
 const UserSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    unAuthrize: (state) => {
+      state.userToken = null;
+      localStorage.removeItem("userToken");
+    },
+  },
 
   extraReducers: (builder) => {
     // builder.addCase(createUserAsync.fulfilled, () => {});
@@ -40,7 +47,7 @@ const UserSlice = createSlice({
   },
 });
 
-export const {} = UserSlice.actions;
+export const { unAuthrize } = UserSlice.actions;
 export const selectUserToken = (state) => state.user.userToken;
 
 export default UserSlice.reducer;

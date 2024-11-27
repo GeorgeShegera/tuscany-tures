@@ -5,6 +5,7 @@ import tours from "../Slices/tours/toursSlice";
 import comments from "../Slices/comments/commentsSlice";
 import services from "../Slices/servicesForm/servicesFormSlice";
 import user from "../Slices/user/UserSlice";
+import orders from "../Slices/orders/orders";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     comments: comments,
     services: services,
     user: user,
+    orders: orders,
   },
 });

@@ -130,20 +130,26 @@
   position: absolute;
 
   overflow: hidden;
-  box-shadow: 0 0.6rem 1rem rgba($color-gray, 0.15);
+  padding-top: 2rem;
+
   border-radius: 1rem;
 }
 
 .userOptionsWraper {
   @extend %userOptionsMenu;
-
-  animation: menuAnimation 0.3s ease-in;
+  animation: menuAnimation 0.2s ease-in;
+  padding-bottom: 0.3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
 }
 
 .userOptionsContainerHidden {
   @extend %userOptionsMenu;
 
-  animation: menuAnimationReverse 0.3s ease-in forwards;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  animation: menuAnimationReverse 0.2s ease-in forwards;
 }
 
 .userOptionsContainer {
@@ -152,7 +158,7 @@
   flex-direction: column;
   color: $color-gray;
   width: max-content;
-
+  box-shadow: 0 8px 10px rgba($color-gray, 0.05);
   font-size: 1.8rem;
   border-radius: 1rem;
 
@@ -162,18 +168,22 @@
 @keyframes menuAnimationReverse {
   0% {
     height: 14rem;
+    opacity: 1;
   }
   100% {
     height: 0;
+    opacity: 0;
   }
 }
 
 @keyframes menuAnimation {
   0% {
     height: 0%;
+    opacity: 0;
   }
   100% {
     height: 14rem;
+    opacity: 1;
   }
 }
 
@@ -183,6 +193,9 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  background-color: white;
+  border: none;
+  cursor: pointer;
 
   &:not(:last-child) {
     border-bottom: 1px solid $color-gray-light;

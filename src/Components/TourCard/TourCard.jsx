@@ -30,7 +30,7 @@ export default function TourCard({
   }, []);
 
   return (
-    <article className={style.card}>
+    <article className={`${style.card} tourCard`}>
       <div
         className={style.cardImg}
         style={{ backgroundImage: `url(${imgAddress})` }}

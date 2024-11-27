@@ -16,6 +16,8 @@ import { useInView } from "react-intersection-observer";
 import useScrollBlock from "../../Hooks/useScrollBlock.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { selectUserToken, unAuthrize } from "../../Slices/user/UserSlice";
+import { useSelector } from "react-redux";
 
 export default function HomeHeader({ isWhite = true }) {
   const { introSection, setHeader } = useContext(SectionRefsContext);
@@ -24,16 +26,27 @@ export default function HomeHeader({ isWhite = true }) {
   const [sticky, setSticky] = useState("none");
   const headerRef = useRef(null);
   useScrollBlock(openNav.value);
+  const [rootMargin, setRootMargin] = useState(
+    `-${
+      !headerRef.current
+        ? `0px`
+        : `${parseInt(getComputedStyle(headerRef.current).height, 10)}px`
+    }`
+  );
+  const userToken = useSelector(selectUserToken);
 
   const { ref: inViewRef, inView } = useInView({
     initialInView: true,
     root: null,
-    rootMargin: `-${
-      headerRef.current === null
-        ? `0px`
-        : getComputedStyle(headerRef.current).height
-    }`,
-    onChange: function (inView, entry) {
+    rootMargin: rootMargin,
+    onChange: (inView, entry) => {
+      console.log(
+        `-${
+          !headerRef.current
+            ? `0px`
+            : `${parseInt(getComputedStyle(headerRef.current).height)}px`
+        }`
+      );
       if (entry.boundingClientRect.top >= 0 || !introSection) {
         setSticky("none");
         return;
@@ -46,6 +59,16 @@ export default function HomeHeader({ isWhite = true }) {
       }
     },
   });
+
+  useEffect(() => {
+    setRootMargin(
+      `-${
+        !headerRef.current
+          ? `0px`
+          : `${parseInt(getComputedStyle(headerRef.current).height, 10)}px`
+      }`
+    );
+  }, [headerRef]);
 
   useEffect(() => {
     if (introSection === null) {
@@ -97,6 +120,16 @@ export default function HomeHeader({ isWhite = true }) {
     setHeader(headerRef.current);
   }, []);
 
+  useEffect(() => {
+    if (!userToken) return;
+    console.log(new Date(userToken.expires));
+    const date = new Date();
+    date.setHours(date.getHours() - 1);
+    if (userToken.expires <= date.getTime()) {
+      dispatch(unAuthrize());
+    }
+  }, [window.location.href]);
+
   return (
     <>
       <header
@@ -111,6 +144,11 @@ export default function HomeHeader({ isWhite = true }) {
             ? "header_sticky_removal"
             : ""
         }`}
+        style={{
+          paddingRight: `${
+            userToken && window.screen.width > 1280 ? "7rem" : "3.2rem"
+          }`,
+        }}
       >
         <div className={style.headerContainer}>
           <a href="#" className={style.logoTusc}>

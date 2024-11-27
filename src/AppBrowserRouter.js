@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { Suspense } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { SectionRefsProvider } from "./Providers/SectionRefsContext";
@@ -18,6 +18,7 @@ function App() {
   const AboutPage = lazy(() => import("./Pages/AboutUs/AbousUs"));
   const TourPackages = lazy(() => import("./Pages/TourPackages/TourPackages"));
   const ContactUs = lazy(() => import("./Pages/ContactUs/ContactUs"));
+  const TicketsPage = lazy(() => import("./Pages/TicketsPage/TicketsPage"));
 
   return (
     <BrowserRouter>
@@ -49,6 +50,10 @@ function App() {
                 <Route
                   path="ContactUs"
                   element={<ContactUs></ContactUs>}
+                ></Route>
+                <Route
+                  path="Tickets"
+                  element={<TicketsPage></TicketsPage>}
                 ></Route>
               </Route>
             </Route>

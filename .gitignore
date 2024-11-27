@@ -1,4 +1,6 @@
 node_modules
+cypress.confing.js
+cypress
 dist
 lib
 coverage

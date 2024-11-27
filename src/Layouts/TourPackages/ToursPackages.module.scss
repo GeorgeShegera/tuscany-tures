@@ -1,3 +1,5 @@
+@use "/src/sass/abstracts/index" as *;
+
 .section {
   padding: 12rem 0;
   display: flex;
@@ -10,7 +12,7 @@
 }
 
 .heading {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   align-self: flex-start;
 }
 
@@ -20,4 +22,49 @@
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 3.3rem;
   grid-row-gap: 8rem;
+}
+
+.searchContainer {
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchBarWrapper {
+  flex: 1 1 auto;
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.searchBar {
+  padding: 1rem 2rem;
+  border-radius: 4rem;
+  border: $line-thin-dark;
+  outline: none;
+  font-size: 1.8rem;
+
+  transition: all 0.3s;
+  width: 90%;
+
+  &:focus {
+    border: 1px solid $color-gray;
+    width: 100%;
+  }
+}
+
+.filters {
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: $color-primary;
+  cursor: pointer;
+  color: $color-white;
 }
