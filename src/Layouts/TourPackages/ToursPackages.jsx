@@ -63,7 +63,6 @@ export default function ToursPackages({ className }) {
           {tourCards.map((tour, index) => (
             <TourCard
               key={`tour-card_${tour.id}`}
-              id={tour.id}
               imgAddress={tour.img}
               title={tour.name}
               price={tour.price}

@@ -26,7 +26,6 @@ export default function ModalInput({
         <input
           type={isPassword ? (showPassword ? "text" : "password") : "text"}
           placeholder={placeholder}
-          id={id}
           className={style.inputModal}
           value={value}
           onChange={(e) => {

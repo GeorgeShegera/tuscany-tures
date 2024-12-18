@@ -49,7 +49,6 @@ function LoginModal({ errorNotification, successNotification }) {
             isPassword={false}
             value={login}
             setValue={setEmailModalLogin}
-            id={"loginEmail"}
           ></ModalInput>
           <ModalInput
             label={"Password"}
@@ -57,7 +56,6 @@ function LoginModal({ errorNotification, successNotification }) {
             isPassword={true}
             value={password}
             setValue={setPasswordModalLogin}
-            id={"loginPassword"}
           ></ModalInput>
           <button
             className={loginStyle.forgotPassBtn}

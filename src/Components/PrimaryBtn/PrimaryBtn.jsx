@@ -6,7 +6,6 @@ export default function PrimaryBtn({
   children,
   onClick,
   type = "primary",
-  id,
 }) {
   const [btnStyle, setBtnStyle] = useState(selectStyle());
 
@@ -23,7 +22,6 @@ export default function PrimaryBtn({
 
   return (
     <a
-      id={id}
       href="#"
       className={`${className} ${btnStyle}`}
       onClick={(e) => {

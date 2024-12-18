@@ -120,7 +120,6 @@ export default function ServiceTimePicker({
             setTimeString(e.target.value);
           }}
           placeholder={placeholder}
-          id={`#formInput${type}`}
           className={`service-input__selector ${
             openDropdown ? "service-input__selector_open" : ""
           } ${selectedTime ? "service-input__selector_set-value" : ""}`}

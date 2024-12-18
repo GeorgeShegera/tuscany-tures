@@ -24,7 +24,7 @@ export default function TourPage() {
         <TourHeroSection></TourHeroSection>
         <TourDetailsSection></TourDetailsSection>
         <GallerySection></GallerySection>
-        <ReviewsSection tourId={tourId}></ReviewsSection>
+        <ReviewsSection></ReviewsSection>
       </div>
     </main>
   );

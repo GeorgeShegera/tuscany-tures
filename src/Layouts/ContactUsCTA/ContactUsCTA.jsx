@@ -53,7 +53,7 @@ function ContactUsCTA({ className }) {
               Message
             </label>
             <textarea
-              id="message"
+              id="contactUsMessage"
               placeholder="Enter your Message"
               className={`${style.formMessage} service-input__element`}
             ></textarea>

@@ -98,7 +98,6 @@ export default function ({ className }) {
           {tours.map((tour) => (
             <SwiperSlide key={tour.id}>
               <TourCard
-                id={tour.id}
                 imgAddress={tour.img}
                 title={tour.name}
                 price={tour.price}

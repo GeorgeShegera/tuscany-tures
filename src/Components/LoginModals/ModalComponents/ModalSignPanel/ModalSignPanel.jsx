@@ -18,7 +18,6 @@ export default function ModalSignPanel({
   return (
     <div className={style.signPnlCont}>
       <PrimaryBtn
-        id={isLogin ? "loginBtnSubmit" : ""}
         onClick={(e) => {
           if (isLogin) {
             dispatch(loginUserAsync(data)).then((resp) => {

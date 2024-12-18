@@ -91,7 +91,6 @@ export default function HomeNav({
         <div className={style.authContainer}>
           <button
             className={`${style.logInBtn} ${style.loginBtn}`}
-            id="btnLogin"
             onClick={() => {
               openLogIn();
             }}
