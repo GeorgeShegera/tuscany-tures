@@ -130,7 +130,12 @@ export default function HomeNav({
             }`}
           >
             <div className={`${style.userOptionsContainer}`}>
-              <a className={style.userOption}>
+              <a
+                className={style.userOption}
+                onClick={() => {
+                  navigate("/Tickets");
+                }}
+              >
                 <svg className={style.icon}>
                   <use
                     xlinkHref={`/svgs/cardSprite.svg#icon-card_ticket`}

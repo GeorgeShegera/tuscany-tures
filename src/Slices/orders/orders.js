@@ -7,7 +7,8 @@ const initialState = {
 
 export const getOrders = createAsyncThunk("orders/getOrders", async (token) => {
   const response = await getOrdersAsync(token);
-  return response;
+  console.log(response);
+  return response.data;
 });
 
 const orders = createSlice({
