@@ -6,9 +6,19 @@ export default function useHeaderOffset() {
   const [offsetY, setOffsetY] = useState(null);
 
   useEffect(() => {
-    if (header) {
-      setOffsetY(getComputedStyle(header).height);
+    function setHeaderOffset() {
+      if (header) {
+        setOffsetY(getComputedStyle(header).height);
+      }
     }
+
+    setHeaderOffset();
+
+    window.addEventListener("resize", setHeaderOffset);
+
+    return () => {
+      window.removeEventListener("resize", setHeaderOffset);
+    };
   }, [header]);
   return offsetY;
 }

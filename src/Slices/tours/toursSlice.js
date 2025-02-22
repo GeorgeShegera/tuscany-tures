@@ -31,6 +31,7 @@ export const initTourCards = createAsyncThunk(
   "tour/getTourCards",
   async ({ pageNumber, cardsCount, searchName }) => {
     const response = await getTourCards({ pageNumber, cardsCount, searchName });
+
     return response.data;
   }
 );

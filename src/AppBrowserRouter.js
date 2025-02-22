@@ -19,6 +19,7 @@ function App() {
   const TourPackages = lazy(() => import("./Pages/TourPackages/TourPackages"));
   const ContactUs = lazy(() => import("./Pages/ContactUs/ContactUs"));
   const TicketsPage = lazy(() => import("./Pages/TicketsPage/TicketsPage"));
+  const Booking = lazy(() => import("./Pages/Booking/Booking"));
 
   return (
     <BrowserRouter>
@@ -39,6 +40,7 @@ function App() {
 
             <Route path="/" element={<Header isWhite={false}></Header>}>
               <Route path="/" element={<Footer></Footer>}>
+                <Route path="booking" element={<Booking></Booking>}></Route>
                 <Route
                   path="tours/:tourId"
                   element={<TourPage></TourPage>}

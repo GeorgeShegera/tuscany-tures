@@ -31,10 +31,12 @@ export default function Calendar() {
   useEffect(() => {
     // Find available dates
     let newAvailableDates = [];
+
     for (const schedule of tour.schedules) {
       let curDate = new Date(Date.parse(schedule.dateTime));
-
-      if (schedule.type.toUpperCase() == "EVERY DAY") {
+      if (schedule.type === null) {
+        newAvailableDates.push(curDate);
+      } else if (schedule.type.toUpperCase() == "EVERY DAY") {
         newAvailableDates = newAvailableDates.concat(
           getDaysInMonth(
             calendarMonth.getFullYear(),

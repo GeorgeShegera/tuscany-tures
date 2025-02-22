@@ -1,19 +1,35 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./TourHeroSection.module.scss";
 import { selectTour } from "../../../Slices/tours/toursSlice.js";
 import Calendar from "../../../Components/Calendar/Calendar.jsx";
 import TimerSelector from "../../../Components/TimerSelector/TimeSelector.jsx";
 import PrimaryBtn from "../../../Components/PrimaryBtn/PrimaryBtn.jsx";
 import { SectionRefsContext } from "../../../Providers/SectionRefsContext.js";
+import { toast } from "react-toastify";
+import {
+  selectSelectedDate,
+  selectSelectedTime,
+  setSelectedTime,
+  setSelectedDate,
+} from "../../../Slices/calendar/CalendarSlice";
+import { selectUserToken } from "../../../Slices/user/UserSlice.js";
+import {
+  selectDate,
+  selectTime,
+} from "../../../Slices/servicesForm/servicesFormSlice.js";
 
 function TourHeroSection() {
-  const navigation = useNavigate();
   const tour = useSelector(selectTour);
-  const [imgStates, setImgsStates] = useState([true, false, false, false]);
+  const selectedTime = useSelector(selectSelectedTime);
+  const selectedDate = useSelector(selectSelectedDate);
+  const userToken = useSelector(selectUserToken);
   const { setIntroSection } = useContext(SectionRefsContext);
+  const [imgStates, setImgsStates] = useState([true, false, false, false]);
   const heroSection = useRef();
+  const navigation = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIntroSection(heroSection.current);
@@ -68,7 +84,28 @@ function TourHeroSection() {
             <Calendar />
             <div className={style.buyTourContainer}>
               <TimerSelector></TimerSelector>
-              <PrimaryBtn className="btn-shadow">Buy Now</PrimaryBtn>
+              <PrimaryBtn
+                className="btn-shadow"
+                onClick={() => {
+                  const options = {
+                    position: "bottom-right",
+                    autoClose: 2_000,
+                  };
+
+                  if (userToken) {
+                    toast.error("You have authorize", options);
+                  } else if (selectedTime !== null && selectedDate !== null) {
+                    const scheduleId = tour.schedules;
+                    navigation(`/booking`);
+                    dispatch(setSelectedTime(null));
+                    dispatch(setSelectedDate(null));
+                  } else {
+                    toast.error("You must date and time", options);
+                  }
+                }}
+              >
+                Buy Now
+              </PrimaryBtn>
             </div>
           </div>
         </div>

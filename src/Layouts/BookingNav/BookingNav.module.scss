@@ -1,0 +1,39 @@
+@use "/src/sass/abstracts/index" as *;
+
+.container {
+  margin: 0 auto;
+  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: repeat(3, 15.1rem);
+  grid-template-rows: repeat(2, auto);
+
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba($color-gray, 0.4);
+  column-gap: 16.6rem;
+  row-gap: 1rem;
+}
+
+.progressLine {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  height: 0.4rem;
+
+  background-color: $color-gray-light;
+  background-image: linear-gradient(to right, $color-primary 100%, transparent);
+  align-self: center;
+  justify-self: center;
+  transition: all 0.3s ease;
+  background-repeat: no-repeat;
+  background-size: 0%;
+}
+
+.progressLineFilled {
+  background-size: 100%;
+  // background-image: linear-gradient(
+  //   to right,
+  //   $color-primary 100%,
+  //   100%,
+  //   $color-gray-light 0%
+  // );
+}

@@ -47,7 +47,7 @@ export default function TourCard({
               <svg className={style.icon}>
                 <use xlinkHref="/svgs/tourSprite.svg#icon-tour_calendar"></use>
               </svg>
-              <p>{dateType}</p>
+              <p>{dateType ?? "At your choice"}</p>
             </div>
             <div className={style.infoBlock}>
               <svg className={style.icon}>
