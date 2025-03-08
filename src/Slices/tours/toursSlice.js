@@ -1,15 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getPopularTourCards, getTour, getTourCards } from "./toursAPI";
 
+const selectedTour = localStorage.getItem("selectedTour");
+
 const initialState = {
   popularTourCards: [],
 
-  tour: {
-    imgs: [],
-    dates: [],
-    schedules: [],
-    languages: [],
-  },
+  tour:
+    selectedTour !== null
+      ? JSON.parse(selectedTour)
+      : {
+          imgs: [],
+          dates: [],
+          schedules: [],
+          languages: [],
+        },
 
   tourCards: [],
 };
@@ -48,6 +53,7 @@ const toursSlice = createSlice({
 
     builder.addCase(initTour.fulfilled, (state, action) => {
       state.tour = action.payload;
+      localStorage.setItem("selectedTour", JSON.stringify(state.tour));
     });
 
     builder.addCase(initTourCards.fulfilled, (state, action) => {

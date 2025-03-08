@@ -6,6 +6,7 @@ export default function BookingNavBtn({
   index,
   selectedNav,
   onClick,
+  value,
 }) {
   return (
     <div
@@ -17,7 +18,7 @@ export default function BookingNavBtn({
       style={{ gridColumn: index }}
     >
       <div className={style.numberBtn}>{index}</div>
-      <p className={style.btnText}>Booking Details</p>
+      <p className={style.btnText}>{value}</p>
     </div>
   );
 }

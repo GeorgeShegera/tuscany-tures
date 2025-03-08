@@ -1,21 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getOrdersAsync } from "./ordersAPI";
 
+const processOrder = localStorage.getItem("processOrder");
+
+const saveProcessOrder = (order) =>
+  localStorage.setItem("processOrder", JSON.stringify(order));
+
 const initialState = {
-  order: {},
+  order:
+    processOrder !== null
+      ? JSON.parse(processOrder)
+      : {
+          adultTickets: 0,
+          childTickets: 0,
+          infantTickets: 0,
+        },
   orders: [],
 };
 
 export const getOrders = createAsyncThunk("orders/getOrders", async (token) => {
   const response = await getOrdersAsync(token);
-  console.log(response);
   return response.data;
 });
 
 const orders = createSlice({
   name: "orders",
   initialState,
-  reducers: {},
 
   extraReducers: (builder) => {
     builder.addCase(getOrders.fulfilled, (state, action) => {
@@ -23,21 +33,34 @@ const orders = createSlice({
     });
   },
 
-  reducer: {
+  reducers: {
     setOrderDateTime: (state, action) => {
       state.order.dateTime = action.payload;
-    },
-    setUserId: (state, action) => {
-      state.order.userId = action.payload;
+      saveProcessOrder(state.order);
     },
     setPaymentMethod: (state, action) => {
       state.order.paymentMethod = action.payload;
-    },
-    setTourScheduleId: (state, action) => {
-      state.order.scheduleId = action.payload;
+      saveProcessOrder(state.order);
     },
     setPrice: (state, action) => {
       state.order.price = action.payload;
+      saveProcessOrder(state.order);
+    },
+    setAdultTickets: (state, action) => {
+      state.order.adultTickets = action.payload;
+      saveProcessOrder(state.order);
+    },
+    setChildTickets: (state, action) => {
+      state.order.childTickets = action.payload;
+      saveProcessOrder(state.order);
+    },
+    setInfantTickets: (state, action) => {
+      state.order.infantTickets = action.payload;
+      saveProcessOrder(state.order);
+    },
+
+    removeProcessOrder: () => {
+      localStorage.removeItem("processOrder");
     },
   },
 });
@@ -48,8 +71,13 @@ export const {
   setUserId,
   setTourScheduleId,
   setPrice,
+  setAdultTickets,
+  setChildTickets,
+  setInfantTickets,
+  removeProcessOrder,
 } = orders.actions;
 
 export const selectOrders = (state) => state.orders.orders;
+export const selectOrder = (state) => state.orders.order;
 
 export default orders.reducer;

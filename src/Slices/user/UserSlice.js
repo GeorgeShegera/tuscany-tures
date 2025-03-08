@@ -5,19 +5,6 @@ const initialState = {
   userToken: JSON.parse(localStorage.getItem("userToken")),
 };
 
-// Only one element could be passed
-// export const createUserAsync = createAsyncThunk(
-//   "modal/modalAPI",
-//   async (nameModalSignUp, passwordModalSignUp, emailModalSignUp) => {
-//     const response = await postAccount(
-//       nameModalSignUp,
-//       passwordModalSignUp,
-//       emailModalSignUp
-//     );
-//     return response;
-//   }
-// );
-
 export const loginUserAsync = createAsyncThunk(
   "modalAPI/loginApiAsync",
   async ({ login, password }) => {

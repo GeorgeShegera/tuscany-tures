@@ -1,0 +1,23 @@
+@use "/src/sass/abstracts/index" as *;
+
+.section {
+  margin-top: 12rem;
+}
+
+.ticketsSelect,
+.ticketsOverview {
+  max-width: 69.1rem;
+}
+
+.headerList {
+  line-height: $snug-line-height;
+  margin-top: 2rem;
+  padding: 1.6rem 2.4rem;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  color: rgba($color-gray, 0.8);
+  background-color: rgba($color-gray-light, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

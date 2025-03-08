@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useHeaderOffset from "../../Hooks/useHeaderOffset";
 import BookingNav from "../../Layouts/BookingNav/BookingNav";
+import BookingDetails from "../../Layouts/BookingDetails/BookingDetails";
 
 export default function Booking() {
   const headerOffset = useHeaderOffset();
@@ -13,6 +14,9 @@ export default function Booking() {
         selectedNav={selectedNav}
         setSelectedNav={setSelectedNav}
       ></BookingNav>
+      {selectedNav === 1 && (
+        <BookingDetails className="main__section_space-between"></BookingDetails>
+      )}
     </main>
   );
 }

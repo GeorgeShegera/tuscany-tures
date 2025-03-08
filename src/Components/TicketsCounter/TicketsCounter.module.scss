@@ -1,0 +1,75 @@
+@use "/src/sass/abstracts/index" as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.6rem 2.4rem;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: $tight-line-height;
+}
+
+.heading {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail {
+  color: rgba($color-gray, 0.8);
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin-left: 2.7rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.price {
+  color: $color-primary;
+}
+
+.counter {
+  max-height: 5rem;
+  display: flex;
+
+  border: $line-thin;
+  border-radius: 6px;
+  color: $color-gray;
+  font-weight: 600;
+  font-size: 2.4rem;
+}
+
+.counterBtnContainer {
+  padding: 1.3rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-gray-light;
+  }
+}
+
+.counterBtn {
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.counterValue {
+  background-color: $color-gray-light;
+  padding: 0.9rem 1.8rem;
+  display: flex;
+  align-items: center;
+}

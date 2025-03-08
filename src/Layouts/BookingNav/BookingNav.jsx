@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./BookingNav.module.scss";
 import BookingNavBtn from "../../Components/BookingNavBtn/BookingNavBtn";
+import { selectTour } from "../../Slices/tours/toursSlice";
+import { useSelector } from "react-redux";
+import { use } from "react";
 
 export default function BookingNav({ className, selectedNav, setSelectedNav }) {
-  const btnNums = [0, 1, 2];
+  const btnNums = ["Booking Details", "Your Details", "Payment"];
   const btns = useRef([]);
   const [progWidth1, setProgWidth1] = useState();
   const [progWidth2, setProgWidth2] = useState();
+  const tour = useSelector(selectTour);
 
   useEffect(() => {
     function calculateDistance() {
@@ -30,11 +34,11 @@ export default function BookingNav({ className, selectedNav, setSelectedNav }) {
 
   return (
     <section className={`${style.container} ${className}`}>
-      {btnNums.map((value) => {
+      {btnNums.map((value, index) => {
         return (
           <BookingNavBtn
             onClick={() => {
-              const newSelectedNav = value + 1;
+              const newSelectedNav = index + 1;
               let diff = newSelectedNav - selectedNav;
               const isNegative = diff < 0;
               if (isNegative) diff *= -1;
@@ -48,9 +52,10 @@ export default function BookingNav({ className, selectedNav, setSelectedNav }) {
               }
             }}
             selectedNav={selectedNav}
-            key={`bookingNavBtn-${value}`}
-            refLink={(el) => (btns.current[value] = el)}
-            index={value + 1}
+            key={`bookingNavBtn-${index}`}
+            refLink={(el) => (btns.current[index] = el)}
+            index={index + 1}
+            value={value}
           ></BookingNavBtn>
         );
       })}
